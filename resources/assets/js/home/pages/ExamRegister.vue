@@ -28,7 +28,6 @@
               <option value="1">My Class</option>
             </select>
           </div>
-          <div>hihi</div>
         </template>
         <template v-else>
           <div class="no-data-semester">
