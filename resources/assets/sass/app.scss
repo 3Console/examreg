@@ -1,0 +1,274 @@
+
+// Fonts
+@import url('https://fonts.googleapis.com/css?family=Nunito');
+
+// Variables
+@import 'variables';
+
+// Bootstrap
+@import '~bootstrap/scss/bootstrap';
+
+// UTF-8
+
+@charset "UTF-8";
+
+@import "icomoon.scss";
+@import "font-awesome.scss";
+@import "OpenSans.scss";
+@import "OpenSans-Bold.scss";
+// @import "OpenSans-Italic.scss";
+// @import "Montserrat-Regular.scss";
+@import "Montserrat-Bold.scss";
+@import "Montserrat-SemiBold.scss";
+@import "Montserrat-Medium.scss";
+@import "tooltip";
+
+body{
+  font-family: $font-family-Montserrat-Medium;
+  font-size: $font_root;
+  color: $color_green_vogue;
+  background: -moz-linear-gradient(90deg, #00023C 0, #00066F 100%);/* FF3.6+ */
+  background: -webkit-gradient(linear, 90deg, color-stop(0, 00023C), color-stop(100%, 00066F));/* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(90deg, #00023C 0, #00066F 100%);/* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(90deg, #00023C 0, #00066F 100%);/* Opera 11.10+ */
+  background: -ms-linear-gradient(90deg, #00023C 0, #00066F 100%);/* IE10+ */
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#1301FE', endColorstr='#F4F60C', GradientType='1'); /* for IE */
+  background: #ffffff;/* W3C */
+}
+
+img {
+  max-width: 100%
+}
+ul {
+  margin: 0px 0px 0px 0px;
+}
+
+button:focus,
+a:focus,
+a:active,
+button::-moz-focus-inner,
+input[type="reset"]::-moz-focus-inner,
+input[type="button"]::-moz-focus-inner,
+input[type="submit"]::-moz-focus-inner,
+input[type="file"] > input[type="button"]::-moz-focus-inner {
+  outline: none !important;
+  box-shadow: none;
+}
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
+}
+
+.btn:active,
+.btn:focus {
+    box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+}
+
+.form-input {
+  width: 100%;
+  line-height: 20px;
+  padding: 10px 15px;
+  border: 1px solid $color_grey_border;
+}
+
+.form-input:focus {
+  border: 1px solid $color_caribbean_green;
+  outline: -webkit-focus-ring-color auto 0px;
+}
+
+input:focus,
+button:focus{
+  outline: -webkit-focus-ring-color auto 0px;
+}
+
+.w_100 {
+  width: 100%;
+}
+
+.col-1, .col-sm-1, .col-md-1, .col-lg-1, .col-2, .col-sm-2, .col-md-2, .col-lg-2, .col-3, .col-sm-3, .col-md-3, .col-lg-3, .col-4, .col-sm-4, .col-md-4, .col-lg-4, .col-5, .col-sm-5, .col-md-5, .col-lg-5, .col-6, .col-sm-6, .col-md-6, .col-lg-6, .col-7, .col-sm-7, .col-md-7, .col-lg-7, .col-8, .col-sm-8, .col-md-8, .col-lg-8, .col-9, .col-sm-9, .col-md-9, .col-lg-9, .col-10, .col-sm-10, .col-md-10, .col-lg-10, .col-11, .col-sm-11, .col-md-11, .col-lg-11, .col-12, .col-sm-12, .col-md-12, .col-lg-12 {
+  flex: none;
+  float: left;
+}
+@media only screen and (max-width: 767px) {
+  .col-xs-12 {
+    width: 100%;
+  }
+}
+
+.btn-primary {
+  background-color: $color_green_vogue;
+  font-size: $font_medium-bigger;
+  border: 1px solid $color_green_vogue;
+  line-height: 20px;
+  padding: 14px 15px;
+  text-transform: uppercase;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  &:not(:disabled):not(.disabled):active:focus,
+  &:not(:disabled):not(.disabled):active,
+  &:hover, &:active, &:focus{
+    background-color: $deep_sapphire;
+    border: 1px solid $deep_sapphire;
+    color: $color-white;
+    -webkit-transition: 0.5s;
+    transition: 0.5s;
+    box-shadow: 0 0 0 0;
+  }
+  &:disabled {
+    background-color: $color_green_vogue;
+    border: 1px solid $color_green_vogue;
+    cursor: not-allowed;
+  }
+}
+
+.guest-page-form-body {
+  .input-group {
+    position: relative;
+    display: block;
+    width: 100%;
+    margin-bottom: 15px;
+
+    .input-group-prepend {
+      position: absolute;
+      top: 0px;
+      left: 0px;
+      span {
+        line-height: 20px;
+        font-size: 20px;
+        color: $color_dark_gray;
+        padding: 15px 10px;
+        height: 50px;
+      }
+    }
+    .form-input {
+      padding-left: 45px;
+      background-color: transparent;
+    }
+  }
+  .form_actions {
+    margin-bottom: 15px;
+    button {
+      border-radius: 50px;
+    }
+  }
+}
+
+.invalid-feedback {
+  display: block;
+}
+main {
+  min-height: calc(100vh - 110px - 112px)
+}
+.form_changes {
+  margin-bottom: 20px;
+  padding: 5px 10px;
+  padding-top: 11px;
+  border-radius: 4px;
+  background: #fff;
+  box-shadow: 0 1px 5px 0 rgba(0, 0, 0, 0.26);
+}
+#page-footer,
+.group_header {
+  min-width: 1140px !important;
+}
+.container {
+  width: $min-width-app !important;
+  max-width: $min-width-app !important;
+  min-width: $min-width-app !important;
+}
+
+
+
+/* =====================================11/04/2019===================================== */
+body {
+  background-color: #ffffff;
+  min-width: $min-width-app !important;
+}
+.form-control:focus {
+  box-shadow: 0 0 0 0 rgba(52, 144, 220, 0.25);
+}
+.clearfix-40 {
+    clear: both;
+    height: 40px;
+    display: block;
+    width: 100%;
+  }
+.clearfix-20 {
+  clear: both;
+  height: 20px;
+  display: block;
+  width: 100%;
+}
+.w_100 {
+  width: 100%;
+}
+.error {
+  color: $red !important;
+}
+.required {
+  color: $red;
+}
+
+@media only screen and (min-width: 1200px) {
+  .container {
+    width: 80% !important;
+    max-width: calc(100% - 100px) !important;
+  }
+}
+@media only screen and (min-width: 1400px) {
+  .container {
+    width: 1200px !important;
+    max-width: calc(100% - 100px) !important;
+  }
+}
+/**
+ * For IE 6/7 only
+ * Include this rule to trigger hasLayout and contain floats.
+ */
+.clearfix {
+  *zoom: 1;
+}
+.cf:before,
+.cf:after {
+    content: " "; /* 1 */
+    display: table; /* 2 */
+}
+
+.cf:after {
+    clear: both;
+}
+
+.modal-dialog {
+  pointer-events: auto;
+  max-height: calc(100vh - 1rem);
+  overflow: hidden;
+}
+
+.modal-body {
+  max-height: calc(100vh - 1rem - 80px);
+  overflow-y: auto;
+}
+
+@media (min-width: 576px) {
+  .modal-dialog {
+    max-width: 500px;
+    margin: 1.75rem auto;
+    max-height: calc(100vh - 3.5rem);
+  }
+  .modal-body {
+    max-height: calc(100vh - 3.5rem - 80px);
+    overflow-y: auto;
+  }
+}
+
+::-webkit-scrollbar {
+  width: 3px;
+  height: 3px;
+}
+::-webkit-scrollbar-track-piece {
+  background: #eee;
+}
+::-webkit-scrollbar-thumb {
+  background: #888;
+}

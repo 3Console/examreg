@@ -1,0 +1,28 @@
+@import "~bootstrap-sass/assets/stylesheets/bootstrap";
+@import './admin-lte';
+@import './all-skins';
+@import url("https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css");
+@import "../variables";
+@import '../icomoon.scss';
+
+button{
+  background-color: $color_white;
+  border: 1px solid $color_grey_border;
+
+}
+button{
+  &:active,&:hover {
+    background-color: $color_blue_logo;
+    color: $color_white;
+  }
+}
+
+.pagination {
+	.page-prev, .page-next {
+		a {
+		    width: 97px !important;
+		    min-width: 97px !important;
+		    border-radius: 0 !important;
+		}
+	}
+}

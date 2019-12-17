@@ -1,0 +1,32 @@
+version: '3'
+services:
+  web:
+    container_name: examreg
+    build: .
+    ports:
+     - "8000:8000"
+    volumes:
+     - .:/var/www/examreg
+    links:
+     - redis
+     - db
+  redis:
+    image: "redis:alpine"
+    ports:
+     - "6379:6379"
+  echo-server:
+    image: "lagun4ik/laravel-echo-server"
+    ports:
+     - "6001:6001"
+    volumes:
+     - .:/app
+    links:
+     - redis
+     - web
+  db:
+    image: "mariadb:10.1.30"
+    environment:
+     MYSQL_ROOT_PASSWORD: "1"
+     MYSQL_DATABASE: "examreg"
+    ports:
+     - "3306:3306"
