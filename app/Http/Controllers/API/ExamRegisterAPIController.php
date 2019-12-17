@@ -35,8 +35,40 @@ class ExamRegisterAPIController extends AppBase
     public function getSemesterDetail(Request $request)
     {
         try {
-            \Log::alert($request->id);
             $data = $this->examRegisterService->getSemesterDetail($request->id);
+            return $this->sendResponse($data);
+        } catch (Exception $ex) {
+            logger()->error($ex);
+            return $this->sendError($ex->getMessage());
+        }
+    }
+
+    public function getAllSemesterClass(Request $request)
+    {
+        try {
+            $data = $this->examRegisterService->getAllSemesterClass($request->all());
+            return $this->sendResponse($data);
+        } catch (Exception $ex) {
+            logger()->error($ex);
+            return $this->sendError($ex->getMessage());
+        }
+    }
+
+    public function getAllUserClass(Request $request)
+    {
+        try {
+            $data = $this->examRegisterService->getAllUserClass(Auth::id(), $request->all());
+            return $this->sendResponse($data);
+        } catch (Exception $ex) {
+            logger()->error($ex);
+            return $this->sendError($ex->getMessage());
+        }
+    }
+
+    public function checkUserClass(Request $request)
+    {
+        try {
+            $data = $this->examRegisterService->checkUserClass(Auth::id(), $request->id);
             return $this->sendResponse($data);
         } catch (Exception $ex) {
             logger()->error($ex);

@@ -34,5 +34,8 @@ Route::group(['middleware' => 'auth:api'], function () {
     Route::group(['prefix' => 'exam-register'], function() {
         Route::get('/semesters', 'API\ExamRegisterAPIController@getSemesters');
         Route::get('/semesters/detail', 'API\ExamRegisterAPIController@getSemesterDetail');
+        Route::get('/semesters/classes', 'API\ExamRegisterAPIController@getAllSemesterClass');
+        Route::get('/semesters/user-class', 'API\ExamRegisterAPIController@getAllUserClass');
+        Route::get('/semesters/{id}/check', 'API\ExamRegisterAPIController@checkUserClass');
     });
 });
