@@ -1,4 +1,4 @@
-# Gamelancer
+# Examreg
 
 ### Architecture Diagram
 ![Architecture diagram](public/images/readme/architecture.png)
