@@ -8,6 +8,7 @@ import Schedule from './pages/MySchedule';
 import ScheduleDetail from './pages/ScheduleDetail';
 import WrapPage from './pages/WrapPage';
 import ExamRegister from './pages/ExamRegister';
+import ClassDetail from './pages/ClassDetail';
 
 export default {
   mode: 'history',
@@ -68,6 +69,14 @@ export default {
           path: '/exam-register',
           name: 'Exam Register',
           component: ExamRegister,
+        },
+        {
+          path: '/exam-register/:id/detail',
+          name: 'Class Detail',
+          component: ClassDetail,
+          meta: {
+            prop: true,
+          },
         },
         { path: '*', name: '404', component: NotFound }
       ]

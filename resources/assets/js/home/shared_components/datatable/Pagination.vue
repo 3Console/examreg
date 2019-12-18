@@ -230,7 +230,7 @@
           cursor: pointer;
           &:hover {
             color: $color_white;
-            background: $color_sea_green;
+            background: #0a3e69;
           }          
           &:focus {
             outline: -webkit-focus-ring-color auto 0px;
