@@ -10,7 +10,7 @@
                   <img src="/images/eaton-logo-design.jpg" alt="">
                 </a>
               </div>
-              <div class="nav-item">
+              <div class="nav-item" v-if="isAuthenticated">
                 <a @click.stop="$router.push({ name: 'Exam Register' })">Exam Register</a>
               </div>
             </div>

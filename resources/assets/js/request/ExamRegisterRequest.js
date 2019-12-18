@@ -25,4 +25,39 @@ export default class ExamRegisterRequest extends BaseModelRequest {
     const url = `/exam-register/semesters/${id}/check`;
     return this.get(url);
   }
+
+  checkUserSchedule(id) {
+    const url = `/exam-register/semesters/${id}/user-schedule`;
+    return this.get(url);
+  }
+
+  checkSchedule(id) {
+    const url = `/exam-register/semesters/${id}/schedule`;
+    return this.get(url);
+  }
+
+  countSlot(id) {
+    const url = `/exam-register/semesters/${id}/slot`;
+    return this.get(url);
+  }
+
+  getUserStatus(id) {
+    const url = `/exam-register/semesters/${id}/user-status`;
+    return this.get(url);
+  }
+
+  getClassSchedule(params) {
+    const url = '/exam-register/semesters/class-schedule';
+    return this.get(url, params);
+  }
+
+  submitSchedule(params) {
+    let url = '/exam-register/semesters/submit';
+    return this.post(url, params);
+  }
+
+  cancelSchedule(params) {
+    let url = '/exam-register/semesters/cancel';
+    return this.post(url, params);
+  }
 }

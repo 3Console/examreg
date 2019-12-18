@@ -4,7 +4,7 @@
       <div class="modal-content"  >
         <div class="modal-header">
           <span class=" symbol message-icon"></span>
-          <button type="button" class="icon_close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true" class="icon-close1"></span></button>
+           <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true" class="icon-close2"></span></button>
           <!-- <h4 class="modal-title">{{configs.title}}</h4> -->
         </div>
         <div class="modal-body">
@@ -40,11 +40,9 @@
             <template v-else>
               <p class="content_text" v-html="configs.content"></p>
             </template>
-            <div class="mart50 text-center" v-if="configs.btnCancelLabel || configs.btnConfirmLabel">
-              <button type="button" data-dismiss="modal" class="btn btn-cancel btn-space btn-secondary">
-                {{ configs.btnCancelLabel || 'Cancel' }}</button>
-              <button type="button" data-dismiss="modal" class="btn btn-confirm btn-space btn-primary">
-                {{ configs.btnConfirmLabel || 'Confirm' }}</button>
+            <div class="text-center mgb_60" v-if="configs.btnCancelLabel || configs.btnConfirmLabel">
+              <button type="button" data-dismiss="modal" class="btn btn-modal btn-cancel">{{ configs.btnCancelLabel }}</button>
+              <button type="button" data-dismiss="modal" class="btn btn-modal btn-confirm">{{ configs.btnConfirmLabel }}</button>
             </div>
           </div>
         </div>
@@ -94,11 +92,14 @@
         this.show();
       });
     }
-  };
+  }
 </script>
 <style lang="scss" scoped>
   @import "../../../sass/_variables.scss";
 
+  .mgb_60 {
+    margin-bottom: 60px;
+  }
   #confirmationModal {
     position   : fixed;
     text-align : center;
@@ -108,19 +109,18 @@
       font-size: 40px;
       width: 40px;
       height: 40px;
-      color: $color-blue-cerulean-lighter;
       margin-top: 0px;
     }
     .tit_modal_confir{
-      // color: $color-blue-cerulean-lighter;
-      font-size: $font_title_size_small_25;
-      line-height: 29px;
-      margin-bottom: 15px;
-      margin-top: 25px;
+      margin-bottom: 30px;
+      margin-top: 10px;
+      line-height: 25px;
       text-align: center;
+      font-size: 20px;
+      color: #333333;
     }
     .modal-dialog {
-      width: 440px;
+      width: 430px;
       max-width: 80%;
       max-height: 80%;
       vertical-align : middle;
@@ -129,49 +129,35 @@
       margin: 13% auto 0px auto;
 
       .modal-content {
-        background-color: $color_black_russian;
         border-radius: 0px;
         position:unset;
         border: 0;
         height: 100%;
           .modal-title {
-            color: $color_dark_gray;
             display: inline-block;
-            font-size: $font_big_20;
           }
-          .icon_close {
-            width: 14px;
-            height: 14px;
-            position: absolute;
-            cursor: pointer;
-            border: 0;
-            background: none;
-            padding: 0;
-            float: right;
-            top: 14px;
-            right: 14px;
-            &:after, &:before {
-              background-color: #8aa2b2;
-              opacity: 0.8;
-              left: 5px;
-              top: 0px;
-              height: 15px;
-              content: "";
-              position: absolute;
-              width: 2px;
-            }
-            &:before {
-              -webkit-transform: rotate(45deg);
-              transform: rotate(45deg);
-            }
-            &:after {
-              -webkit-transform: rotate(-45deg);
-              transform: rotate(-45deg);
-            }
+          .close {
+            height: 20px;
+            width: 20px;
+            opacity: 0.9;
+            z-index: 100;
+            position: relative;
+            outline: none;
+            background: transparent !important;
             &:hover {
-              &:after, &:before {
-                opacity: 1;
-              }
+              opacity: 1;
+            }
+            .icon-close1 {
+              border-radius: 50%;
+              line-height: 32px;
+              overflow: hidden;
+              text-align: center;
+              display: inline-block;
+              float: right;
+              width: 30px;
+              height: 30px;
+              margin: 0px 0px 0 0;
+              cursor: pointer;
             }
           }
         .modal-header{
@@ -180,42 +166,28 @@
           border-bottom: none;
         }
         .modal-body{
-          padding: 0 75px 30px !important;
           border: 0px;
-          color: rgb(51,51,51);
           position: unset;
           padding: 10px 25px;
-          font-size: $font_small;
           .content_text{
-            font-size: $font_medium-bigger;
-            line-height: 20px;
-            margin: 4px auto 13px auto;
-            display: block;
-            max-width: 298px;
-            min-height: 60px;
-            font-size: $font_small;
-            color: $color_green_vogue;//$color_dark_gray;
+            margin-bottom: 10px;
+            margin-top: 10px;
+            line-height: 25px;
             text-align: center;
+            font-size: 20px;
+            color: #333333;
             strong{
-              font-size: $font_medium-bigger;
-              color: $color-grey;
               font-weight: 400;
-              line-height: 24px;
+              line-height: 20px;
             }
           }
           .primary{
             margin-top: 30px;
             margin-bottom: 20px;
             .btn-primary{
-              background-color: $color-blue-cerulean-lighter;
-              border-color: $color-blue-cerulean-lighter;
-              color: $color_white;
               -webkit-transition: 0.5s;
               transition: 0.5s;
               &:hover, &:active, &:focus{
-                background: $color-blue-cerulean-lighter;
-                border-color: $color-blue-cerulean-lighter;
-                color: $color-white;
                 -webkit-transition: 0.5s;
                 transition: 0.5s;
               }
@@ -223,15 +195,9 @@
           }
           .success{
             .btn-primary{
-              background-color: $color-grey;
-              border-color: $color-grey;
-              color: $color_white;
               -webkit-transition: 0.5s;
               transition: 0.5s;
               &:hover, &:active, &:focus{
-                background: $color-blue-cerulean-lighter;
-                border-color: $color-blue-cerulean-lighter;
-                color: $color-white;
                 -webkit-transition: 0.5s;
                 transition: 0.5s;
               }
@@ -239,15 +205,9 @@
           }
           .warning{
             .btn-primary{
-              background-color: $color_caribbean_green;
-              border-color: $color_caribbean_green;
-              color: $color_white;
               -webkit-transition: 0.5s;
               transition: 0.5s;
               &:hover, &:active, &:focus{
-                background: $color-blue-cerulean-lighter;
-                border-color: $color-blue-cerulean-lighter;
-                color: $color-white;
                 -webkit-transition: 0.5s;
                 transition: 0.5s;
               }
@@ -255,64 +215,47 @@
           }
           .danger{
             .btn-primary{
-              background-color: $red;
-              border-color: $red;
-              color: $color_white;
               -webkit-transition: 0.5s;
               transition: 0.5s;
               &:hover, &:active, &:focus{
-                background: $color-blue-cerulean-lighter;
-                border-color: $color-blue-cerulean-lighter;
-                color: $color-white;
                 -webkit-transition: 0.5s;
                 transition: 0.5s;
               }
             }
           }
-          button{
-            box-shadow: 0 1px 0 rgba(0,0,0,.05);
-            // border: 1px solid $color_slate_blue;
-            padding: 10px 10px;
-            font-size: $font_root;
+          .btn-modal {
+            margin: 0px 5px;
             line-height: 20px;
-            height: 40px;
-            border-radius: 25px;
-            font-weight: 500;
-            min-width: 130px;
-            margin: 5px;
-            font-weight: 700;
+            height: 35px;
+            padding: 7px 7px;
+            text-align: center;
+            width: 100px;
+            border-radius: 20px;
+            font-size: $font_root;
+            font-weight: 600;
+            text-align: center;
             text-transform: uppercase;
-            background-color: $color-blue-cerulean-lighter;
-            color: $color_white;
-            -webkit-transition: 0.5s;
             transition: 0.5s;
-            &:hover, &:active, &:focus{
-              background: $color-blue-cerulean-lighter;//$color_slate_blue;
-              // border-color: $color-blue-cerulean-lighter;
-              color: $color-white;
-              -webkit-transition: 0.5s;
-              transition: 0.5s;
+            &.btn-cancel {
+              background-color: $color_concrete;
+              border: 1px solid $color_alto;
+              color: $color_dove_gray;
+              opacity: 0.9;
             }
-            &.btn-secondary {
-              background: transparent;
-              color: $color-blue-cerulean-lighter;
-              -webkit-transition: 0.5s;
-              transition: 0.5s;
-              border: 1px solid $color-blue-cerulean-lighter;
-              &:hover, &:active, &:focus{
-                background: $color-blue-cerulean-lighter;//$color_slate_blue;
-                // border-color: $color-blue-cerulean-lighter;
-                color: $color-white;
-                -webkit-transition: 0.5s;
-                transition: 0.5s;
-              }
+            &.btn-confirm {
+              background-color: #0a3e69;
+              border: 1px solid #0a3e69;
+              color: $color_white;
+              opacity: 0.9;
+            }
+            &:hover {
+              opacity: 1;
             }
           }
         }
       }
       .modal-footer {
         padding: 15px;
-        background-color: $color-white;
         border-top: none;
         .btn {
           border-radius : 0px;
@@ -322,29 +265,11 @@
           font-size     : 13px;
         }
         .btn-cancel {
-          background: $yellow;
           &:hover {
             opacity: 0.2;
           }
         }
 
-      }
-      .btn-confirm {
-        float: none;
-        background-color: #010788 !important;
-        &:hover, &:focus, &:active {
-          background-color: #0a11a7 !important;
-        }
-      }
-      .btn-cancel {
-        background: $color_black_russian !important;
-        color: $color_white !important;
-        border: 1px solid $color_white !important;
-        &:hover, &:focus, &:active {
-          background-color: $color_white!important;
-          color: #6369de !important;
-          border: 1px solid #0a11a7 !important;
-        }
       }
     }
   }
