@@ -401,7 +401,7 @@
     mounted() {
       this.id = this.$route.params.id;
       rf.getRequest('ClassRequest').getUnitClass(this.id).then(res => {
-        this.title = '[' + res.data.class_code + ']' + ' ' + res.data.subject;
+        this.title = res.data.subject;
       })
       this.$emit('EVENT_PAGE_CHANGE', this);
     }

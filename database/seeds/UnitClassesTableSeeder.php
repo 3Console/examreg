@@ -21,20 +21,14 @@ class UnitClassesTableSeeder extends Seeder
             [
                 'id' => '1',
                 'subject' => 'Phát triển ứng dụng web',
-                'class_code' => 'INT3301_1',
-                'lecturer' => $faker->name,
             ],
             [
                 'id' => '2',
                 'subject' => 'Lập trình hướng đối tượng',
-                'class_code' => 'INT3302_1',
-                'lecturer' => $faker->name,
             ],
             [
                 'id' => '3',
                 'subject' => 'Cơ sở dữ liệu',
-                'class_code' => 'INT3303_1',
-                'lecturer' => $faker->name,
             ],
         ]);
     }

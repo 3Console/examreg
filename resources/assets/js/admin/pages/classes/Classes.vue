@@ -24,9 +24,7 @@
                     @DataTable:finish="onDatatableFinish">
           <th class="col1 text-left">ID</th>
           <th class="col2 text-left" data-sort-field="subject">Subject</th>
-          <th class="col3 text-left" data-sort-field="class_code">Code</th>
-          <th class="col4 text-left" data-sort-field="lecturer">Lecturer</th>
-          <th class="col5 text-right">Actions</th>
+          <th class="col3 text-right">Actions</th>
 
           <template slot="body" slot-scope="props">
             <template v-if="rows[ props.index ].editable === false">
@@ -37,13 +35,7 @@
                 <td class="col2 text-left" @click="onClickUserClass(rows[ props.index ])" style="cursor: pointer;">
                   {{ rows[ props.index ].subject }}
                 </td>
-                <td class="col3 text-left">
-                  {{ rows[ props.index ].class_code }}
-                </td>
-                <td class="col4 text-left">
-                  {{ rows[ props.index ].lecturer }}
-                </td>
-                <td class="col5 text-right">
+                <td class="col3 text-right">
                   <button type="button" class="btn btn_edit_user" @click.stop="onClickRemove(rows[ props.index ].id)">
                     <i class="fa fa-trash-o"></i>
                   </button>
@@ -69,33 +61,7 @@
                     {{ errors.first('subject') }}
                   </span>
                 </td>
-                <td class="col3 text-left">
-                  <input class="form-control" 
-                         type="text"
-                         name="class_code"
-                         data-vv-as="class_code"
-                         v-validate="'required'"
-                         data-vv-validate-on="none"
-                         @focus="resetError"
-                         v-model="params.class_code" />
-                  <span v-show="errors.has('class_code')" class="error has-error">
-                    {{ errors.first('class_code') }}
-                  </span>
-                </td>
-                <td class="col4 text-left">
-                  <input class="form-control" 
-                         type="text"
-                         name="lecturer"
-                         data-vv-as="lecturer"
-                         v-validate="'required'"
-                         data-vv-validate-on="none"
-                         @focus="resetError"
-                         v-model="params.lecturer" />
-                  <span v-show="errors.has('lecturer')" class="error has-error">
-                    {{ errors.first('lecturer') }}
-                  </span>
-                </td>
-                <td class="col5 text-right">
+                <td class="col3 text-right">
                   <button type="button" class="btn btn_edit_user" @click.stop="onClickCancel()">
                     <i class="icon-close"></i>
                   </button>
@@ -124,7 +90,7 @@
         searchKey: '',
         params: {},
         limit: 10,
-        column: 5,
+        column: 3,
         rows: [],
         isLoading: false,
         isUpdate: false,
@@ -193,8 +159,6 @@
         }
 
         await this.$validator.validate('subject');
-        await this.$validator.validate('class_code');
-        await this.$validator.validate('lecturer');
         if (this.errors.any()) {
           return;
         }

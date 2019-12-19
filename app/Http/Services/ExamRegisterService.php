@@ -52,8 +52,7 @@ class ExamRegisterService
     {
         return SemesterClass::join('unit_classes', 'unit_classes.id', 'semester_classes.unit_class_id')
                             ->where('semester_classes.semester_id', $input['id'])
-                            ->select('semester_classes.id', 'unit_classes.id as class_id', 'unit_classes.subject', 'unit_classes.class_code',
-                                    'unit_classes.lecturer')
+                            ->select('semester_classes.id', 'unit_classes.id as class_id', 'unit_classes.subject')
                             ->when(
                                 !empty($input['sort']) && !empty($input['sort_type']),
                                 function ($query) use ($input) {
@@ -65,9 +64,7 @@ class ExamRegisterService
                             ->when(!empty($input['search_key']), function ($query) use ($input) {
                                 $searchKey = $input['search_key'];
                                 return $query->where(function ($q) use ($searchKey) {
-                                    $q->where('unit_classes.subject', 'like', '%' . $searchKey . '%')
-                                        ->orWhere('unit_classes.class_code', 'like', '%' . $searchKey . '%')
-                                        ->orWhere('unit_classes.lecturer', 'like', '%' . $searchKey . '%');
+                                    $q->where('unit_classes.subject', 'like', '%' . $searchKey . '%');
                                 });
                             })
                             ->paginate(array_get($input, 'limit', Consts::DEFAULT_PER_PAGE));
@@ -79,8 +76,7 @@ class ExamRegisterService
                             ->join('user_classes', 'user_classes.unit_class_id', 'unit_classes.id')
                             ->where('semester_classes.semester_id', $input['id'])
                             ->where('user_classes.user_id', $userId)
-                            ->select('semester_classes.id', 'unit_classes.id as class_id', 'unit_classes.subject', 'unit_classes.class_code',
-                                    'unit_classes.lecturer')
+                            ->select('semester_classes.id', 'unit_classes.id as class_id', 'unit_classes.subject')
                             ->when(
                                 !empty($input['sort']) && !empty($input['sort_type']),
                                 function ($query) use ($input) {
@@ -92,9 +88,7 @@ class ExamRegisterService
                             ->when(!empty($input['search_key']), function ($query) use ($input) {
                                 $searchKey = $input['search_key'];
                                 return $query->where(function ($q) use ($searchKey) {
-                                    $q->where('unit_classes.subject', 'like', '%' . $searchKey . '%')
-                                        ->orWhere('unit_classes.class_code', 'like', '%' . $searchKey . '%')
-                                        ->orWhere('unit_classes.lecturer', 'like', '%' . $searchKey . '%');
+                                    $q->where('unit_classes.subject', 'like', '%' . $searchKey . '%');
                                 });
                             })
                             ->paginate(array_get($input, 'limit', Consts::DEFAULT_PER_PAGE));

@@ -15,9 +15,7 @@ class CreateUnitClassesTable extends Migration
     {
         Schema::create('unit_classes', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('subject');
-            $table->string('class_code');
-            $table->string('lecturer');
+            $table->string('subject')->unique();
             $table->timestamps();
         });
     }

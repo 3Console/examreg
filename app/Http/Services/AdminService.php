@@ -302,8 +302,7 @@ class AdminService {
     {
         return SemesterClass::join('unit_classes', 'unit_classes.id', 'semester_classes.unit_class_id')
                             ->where('semester_classes.semester_id', $semesterId)
-                            ->select('semester_classes.id', 'semester_classes.unit_class_id', 'unit_classes.subject', 'unit_classes.class_code',
-                                'unit_classes.lecturer')
+                            ->select('semester_classes.id', 'semester_classes.unit_class_id', 'unit_classes.subject')
                             ->when(
                                 !empty($input['sort']) && !empty($input['sort_type']),
                                 function ($query) use ($input) {
@@ -315,9 +314,7 @@ class AdminService {
                             ->when(!empty($input['search_key']), function ($query) use ($input) {
                                 $searchKey = $input['search_key'];
                                 return $query->where(function ($q) use ($searchKey) {
-                                    $q->where('unit_classes.subject', 'like', '%' . $searchKey . '%')
-                                        ->orWhere('unit_classes.class_code', 'like', '%' . $searchKey . '%')
-                                        ->orWhere('unit_classes.lecturer', 'like', '%' . $searchKey . '%');
+                                    $q->where('unit_classes.subject', 'like', '%' . $searchKey . '%');
                                 });
                             })
                             ->paginate(array_get($input, 'limit', Consts::DEFAULT_PER_PAGE));
@@ -363,7 +360,7 @@ class AdminService {
 
     public function getClasses($input)
     {
-        return UnitClass::select('id', 'subject', 'class_code', 'lecturer')
+        return UnitClass::select('id', 'subject')
                     ->when(
                         !empty($input['sort']) && !empty($input['sort_type']),
                         function ($query) use ($input) {
@@ -375,9 +372,7 @@ class AdminService {
                     ->when(!empty($input['search_key']), function ($query) use ($input) {
                         $searchKey = $input['search_key'];
                         return $query->where(function ($q) use ($searchKey) {
-                            $q->where('subject', 'like', '%' . $searchKey . '%')
-                                ->orWhere('class_code', 'like', '%' . $searchKey . '%')
-                                ->orWhere('lecturer', 'like', '%' . $searchKey . '%');
+                            $q->where('subject', 'like', '%' . $searchKey . '%');
                         });
                     })
                     ->paginate(array_get($input, 'limit', Consts::DEFAULT_PER_PAGE));
@@ -385,15 +380,13 @@ class AdminService {
 
     public function getAllClass()
     {
-        return UnitClass::select('id', 'subject', 'class_code', 'lecturer')->get();
+        return UnitClass::select('id', 'subject')->get();
     }
 
     public function createClass($input)
     {
         $class = UnitClass::create([
             'subject' => $input['subject'],
-            'class_code' => $input['class_code'],
-            'lecturer' => $input['lecturer'],
         ]);
 
         return $class;
@@ -406,12 +399,6 @@ class AdminService {
 
         if (array_key_exists('subject', $input)) {
             $class->subject = $input['subject'];
-        }
-        if (array_key_exists('class_code', $input)) {
-            $class->class_code = $input['class_code'];
-        }
-        if (array_key_exists('lecturer', $input)) {
-            $class->lecturer = $input['lecturer'];
         }
 
         $class->save();
@@ -428,7 +415,7 @@ class AdminService {
     public function getUnitClass($classId)
     {
         return UnitClass::where('id', $classId)
-                        ->select('subject', 'class_code')
+                        ->select('subject')
                         ->first();
     }
 
@@ -617,7 +604,7 @@ class AdminService {
         return Schedule::join('unit_classes', 'unit_classes.id', 'schedules.unit_class_id')
                         ->join('shifts', 'shifts.id', 'schedules.shift_id')
                         ->join('locations', 'locations.id', 'schedules.location_id')
-                        ->select('schedules.id', 'unit_classes.id as unit_class_id', 'unit_classes.subject', 'unit_classes.class_code', 'shifts.id as shift_id','shifts.start_time', 'shifts.end_time', 'locations.id as location_id','locations.room', 'locations.address', 'schedules.date')
+                        ->select('schedules.id', 'unit_classes.id as unit_class_id', 'unit_classes.subject', 'shifts.id as shift_id','shifts.start_time', 'shifts.end_time', 'locations.id as location_id','locations.room', 'locations.address', 'schedules.date')
                         ->when(
                             !empty($input['sort']) && !empty($input['sort_type']),
                             function ($query) use ($input) {
@@ -630,7 +617,6 @@ class AdminService {
                             $searchKey = $input['search_key'];
                             return $query->where(function ($q) use ($searchKey) {
                                 $q->where('unit_classes.subject', 'like', '%' . $searchKey . '%')
-                                    ->orWhere('unit_classes.class_code', 'like', '%' . $searchKey . '%')
                                     ->orWhere('shifts.start_time', 'like', '%' . $searchKey . '%')
                                     ->orWhere('shifts.end_time', 'like', '%' . $searchKey . '%')
                                     ->orWhere('locations.room', 'like', '%' . $searchKey . '%')
@@ -688,8 +674,7 @@ class AdminService {
                         ->join('shifts', 'shifts.id', 'schedules.shift_id')
                         ->join('locations', 'locations.id', 'schedules.location_id')
                         ->where('schedules.id', $id)
-                        ->select('schedules.id', 'unit_classes.id as unit_class_id', 'unit_classes.subject', 'unit_classes.class_code',
-                            'unit_classes.lecturer', 'shifts.id as shift_id','shifts.start_time', 'shifts.end_time',
+                        ->select('schedules.id', 'unit_classes.id as unit_class_id', 'unit_classes.subject', 'shifts.id as shift_id','shifts.start_time', 'shifts.end_time',
                             'locations.id as location_id','locations.room', 'locations.address', 'schedules.date')
                         ->first();
     }

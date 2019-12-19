@@ -24,9 +24,7 @@
                     @DataTable:finish="onDatatableFinish">
           <th class="col1 text-left">ID</th>
           <th class="col2 text-left" data-sort-field="subject">Subject</th>
-          <th class="col3 text-left" data-sort-field="class_code">Code</th>
-          <th class="col4 text-left" data-sort-field="lecturer">Lecturer</th>
-          <th class="col5 text-right">Actions</th>
+          <th class="col3 text-right">Actions</th>
 
           <template slot="body" slot-scope="props">
             <template v-if="rows[ props.index ].editable === false">
@@ -37,13 +35,8 @@
                 <td class="col2 text-left">
                   {{ rows[ props.index ].subject }}
                 </td>
-                <td class="col3 text-left">
-                  {{ rows[ props.index ].class_code }}
                 </td>
-                <td class="col4 text-left">
-                  {{ rows[ props.index ].lecturer }}
-                </td>
-                <td class="col5 text-right">
+                <td class="col3 text-right">
                   <button type="button" class="btn btn_edit_user" @click.stop="onClickRemove(rows[ props.index ].id)">
                     <i class="fa fa-trash-o"></i>
                   </button>
@@ -64,15 +57,13 @@
                           data-vv-validate-on="none"
                           @focus="resetError"
                           v-model="params.unit_class_id" >
-                    <option v-for="item in classes" :value="item.id">{{ item.class_code }}</option>
+                    <option v-for="item in classes" :value="item.id">{{ item.subject }}</option>
                   </select>
                   <span v-show="errors.has('unit_class_id')" class="error has-error">
                     {{ errors.first('unit_class_id') }}
                   </span>
                 </td>
-                <td class="col3 text-left"></td>
-                <td class="col4 text-left"></td>
-                <td class="col5 text-right">
+                <td class="col3 text-right">
                   <button type="button" class="btn btn_edit_user" @click.stop="onClickCancel()">
                     <i class="icon-close"></i>
                   </button>
@@ -105,7 +96,7 @@
         titlePage: 'Semester',
         searchKey: '',
         limit: 10,
-        column: 5,
+        column: 3,
         params: {},
         rows: [],
         classes: [],

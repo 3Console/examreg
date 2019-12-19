@@ -16,7 +16,7 @@
             <template slot="body" slot-scope="props">
               <div class="item-content">
                 <div class="title-subject" @click="onClickScheduleDetail(rows[ props.index ])">
-                  {{ rows[ props.index ].subject }} [{{ rows[ props.index ].class_code }}]
+                  {{ rows[ props.index ].subject }}
                 </div>
                 <div class="title-time">
                   <label>Date: </label>

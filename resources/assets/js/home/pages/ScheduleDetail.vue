@@ -38,9 +38,7 @@
               <div class="list-item">
                 <div class="item-container" style="display: flex;">
                   <label class="item-title" style="margin-right: 10px; width: 20%;">Subject: </label>
-                  <div class="item-data" style="width: 80%; font-weight: bold;">
-                    {{ schedule.subject }} [{{ schedule.class_code }}]
-                  </div>
+                  <div class="item-data" style="width: 80%; font-weight: bold;">{{ schedule.subject }}</div>
                 </div>
                 <div class="item-container" style="display: flex;">
                   <label class="item-title" style="margin-right: 10px; width: 20%;">Name: </label>

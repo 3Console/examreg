@@ -36,10 +36,6 @@
                 <div class="item-data">{{ schedule.subject }}</div>
               </div>
               <div class="item-container" style="display: flex;">
-                <label class="item-title" style="margin-right: 10px; font-weight: bold;">Code: </label>
-                <div class="item-data">{{ schedule.class_code }}</div>
-              </div>
-              <div class="item-container" style="display: flex;">
                 <label class="item-title" style="margin-right: 10px; font-weight: bold;">Lecturer: </label>
                 <div class="item-data">{{ schedule.lecturer }}</div>
               </div>

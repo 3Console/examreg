@@ -47,8 +47,7 @@
                     <div class="box-classes">
                       <img src="/images/developer.png">
                       <div class="box-title" @click="onClickClassDetail(rows[ props.index ])">
-                        <div class="subject-heading">{{ rows[ props.index ].subject }} [{{ rows[ props.index ].class_code }}]</div>
-                        <div class="lecturer-heading">Lecturer: {{ rows[ props.index ].lecturer }}</div>
+                        <div class="subject-heading">{{ rows[ props.index ].subject }}</div>
                       </div>
                     </div>
                   </div>

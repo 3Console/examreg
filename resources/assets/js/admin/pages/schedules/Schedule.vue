@@ -24,12 +24,11 @@
                     @DataTable:finish="onDatatableFinish">
           <th class="col1 text-left">ID</th>
           <th class="col2 text-left" data-sort-field="subject">Subject</th>
-          <th class="col3 text-left" data-sort-field="class_code">Code</th>
-          <th class="col4 text-left" data-sort-field="start_time">Start_time</th>
-          <th class="col5 text-left" data-sort-field="end_time">End_time</th>
-          <th class="col6 text-left">Location</th>
-          <th class="col7 text-left" data-sort-field="date">Date</th>
-          <th class="col8 text-right">Actions</th>
+          <th class="col3 text-left" data-sort-field="start_time">Start_time</th>
+          <th class="col4 text-left" data-sort-field="end_time">End_time</th>
+          <th class="col5 text-left">Location</th>
+          <th class="col6 text-left" data-sort-field="date">Date</th>
+          <th class="col7 text-right">Actions</th>
 
           <template slot="body" slot-scope="props">
             <template v-if="rows[ props.index ].editable === false">
@@ -41,21 +40,18 @@
                   {{ rows[ props.index ].subject }}
                 </td>
                 <td class="col3 text-left">
-                  {{ rows[ props.index ].class_code }}
-                </td>
-                <td class="col4 text-left">
                   {{ rows[ props.index ].start_time }}
                 </td>
-                <td class="col5 text-left">
+                <td class="col4 text-left">
                   {{ rows[ props.index ].end_time }}
                 </td>
-                <td class="col6 text-left">
+                <td class="col5 text-left">
                   {{ rows[ props.index ].room }} - {{ rows[ props.index ].address }}
                 </td>
-                <td class="col7 text-left">
+                <td class="col6 text-left">
                   {{ rows[ props.index ].date }}
                 </td>
-                <td class="col8 text-right">
+                <td class="col7 text-right">
                   <button type="button" class="btn btn_edit_user" @click.stop="onClickRemove(rows[ props.index ].id)">
                     <i class="fa fa-trash-o"></i>
                   </button>
@@ -68,8 +64,7 @@
             <template v-else>
               <tr>
                 <td class="col1"></td>
-                <td class="col2"></td>
-                <td class="col3 text-left">
+                <td class="col2">
                   <select name="unit_class_id"
                           class="form-control"
                           data-vv-as="unit_class"
@@ -77,13 +72,13 @@
                           data-vv-validate-on="none"
                           @focus="resetError"
                           v-model="params.unit_class_id" >
-                    <option v-for="item in classes" :value="item.id">{{ item.class_code }}</option>
+                    <option v-for="item in classes" :value="item.id">{{ item.subject }}</option>
                   </select>
                   <span v-show="errors.has('unit_class_id')" class="error has-error">
                     {{ errors.first('unit_class_id') }}
                   </span>
                 </td>
-                <td class="col4 text-left">
+                <td class="col3 text-left">
                   <select name="shift_id"
                           class="form-control"
                           data-vv-as="shift"
@@ -97,8 +92,8 @@
                     {{ errors.first('unit_class_id') }}
                   </span>
                 </td>
-                <td class="col5"></td>
-                <td class="col6 text-left">
+                <td class="col4"></td>
+                <td class="col5 text-left">
                   <select name="location_id"
                           class="form-control"
                           data-vv-as="location"
@@ -112,7 +107,7 @@
                     {{ errors.first('unit_class_id') }}
                   </span>
                 </td>
-                <td class="col7 text-left">
+                <td class="col6 text-left">
                   <date-picker
                       id="date-picker"
                       width="160px"
@@ -131,7 +126,7 @@
                       {{ errors.first('date') }}
                     </span>
                 </td>
-                <td class="col8 text-right">
+                <td class="col7 text-right">
                   <button type="button" class="btn btn_edit_user" @click.stop="onClickCancel()">
                     <i class="icon-close"></i>
                   </button>
@@ -159,7 +154,7 @@
         searchKey: '',
         params: {},
         limit: 10,
-        column: 8,
+        column: 7,
         rows: [],
         isLoading: false,
         isUpdate: false,

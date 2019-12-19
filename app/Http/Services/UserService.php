@@ -125,7 +125,7 @@ class UserService
                             ->join('shifts', 'shifts.id', 'schedules.shift_id')
                             ->join('locations', 'locations.id', 'schedules.location_id')
                             ->where('user_schedules.user_id', $userId)
-                            ->select('user_schedules.id', 'unit_classes.subject', 'unit_classes.class_code', 'schedules.date', 'locations.room', 
+                            ->select('user_schedules.id', 'unit_classes.subject', 'schedules.date', 'locations.room', 
                                         'locations.address', 'shifts.start_time', 'shifts.end_time')
                             ->when(
                                 !empty($input['sort']),
@@ -139,7 +139,6 @@ class UserService
                                 $searchKey = $input['searchKey'];
                                 return $query->where(function ($q) use ($searchKey) {
                                     return $q->where('unit_classes.subject', 'like', "%{$searchKey}%")
-                                            ->orWhere('unit_classes.class_code', 'like', "%{$searchKey}%")
                                             ->orWhere('schedules.date', 'like', "%{$searchKey}%")
                                             ->orWhere('locations.room', 'like', "%{$searchKey}%")
                                             ->orWhere('locations.address', 'like', "%{$searchKey}%")
@@ -160,7 +159,7 @@ class UserService
                             ->join('locations', 'locations.id', 'schedules.location_id')
                             ->join('users', 'users.id', 'user_schedules.user_id')
                             ->where('user_schedules.id', $id)
-                            ->select('user_schedules.id', 'unit_classes.subject', 'unit_classes.class_code', 'schedules.date', 'locations.room', 
+                            ->select('user_schedules.id', 'unit_classes.subject', 'schedules.date', 'locations.room', 
                                         'locations.address', 'shifts.start_time', 'shifts.end_time', 'users.msv', 'users.full_name', 'users.dob'
                                         , 'users.course')
                             ->first();

@@ -8,7 +8,5 @@ class UnitClass extends Model
 {
     protected $fillable = [
         'subject',
-        'class_code',
-        'lecturer',
     ];
 }
