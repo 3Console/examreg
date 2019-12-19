@@ -15,6 +15,7 @@ import ClickOutside from 'vue-click-outside';
 import store from './store/index.js';
 import CKEditor from '@ckeditor/ckeditor5-vue';
 import RouterUtils from './common/RouterUtils';
+import AuthenticationUtils from './common/AuthenticationUtils';
 import VTooltip from 'v-tooltip';
 import DatePicker from 'vue2-datepicker';
 import VueHtmlToPaper from 'vue-html-to-paper';
@@ -47,7 +48,7 @@ Vue.directive('click-outside', ClickOutside);
 
 const i18n = window.i18n;
 router.beforeEach((to, from, next) => {
-  // window.i18n.locale = document.documentElement.lang;
+  window.i18n.locale = AuthenticationUtils.getLocale(document.documentElement.lang);
 
   // if (to.path === 'login') {
   //   return next();

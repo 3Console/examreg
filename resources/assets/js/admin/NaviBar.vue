@@ -76,7 +76,7 @@
           <i class="icon-checked"></i>
           <li class="item dropdown notifications-menu">
            <a href="#" class="dropdown-toggle button_out_admin">
-             <i class="" @click.stop="$refs.logout.submit()">Logout</i>
+             <i class="" @click.stop="$refs.logout.submit()">{{ $t('common.logout') }}</i>
            </a>
            <form action="/admin/logout" method="POST" ref=logout>
              <input type="hidden" name="_token" :value="csrfToken"/>

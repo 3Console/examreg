@@ -37,7 +37,7 @@ export default new VueRouter({
       meta: {
         type: 'item',
         icon: 'icon-avatar',
-        routerNameDisp: 'Account',
+        routerNameDisp: 'account',
         hasPermission: true,
       }
     },
@@ -47,7 +47,7 @@ export default new VueRouter({
       meta: {
         type: 'item',
         icon: 'fa fa-list-alt',
-        routerNameDisp: 'Semesters',
+        routerNameDisp: 'semesters',
         hasPermission: true,
       },
       children: [
@@ -79,7 +79,7 @@ export default new VueRouter({
       meta: {
         type: 'item',
         icon: 'fa fa-home',
-        routerNameDisp: 'Classes',
+        routerNameDisp: 'classes',
         hasPermission: true,
       },
       children: [
@@ -111,7 +111,7 @@ export default new VueRouter({
       meta: {
         type: 'item',
         icon: 'fa fa-calendar',
-        routerNameDisp: 'Schedules',
+        routerNameDisp: 'schedules',
         hasPermission: true,
       },
       children: [
@@ -155,7 +155,7 @@ export default new VueRouter({
       meta: {
         type: 'item',
         icon: 'fa fa-clock-o',
-        routerNameDisp: 'Shifts',
+        routerNameDisp: 'shifts',
         hasPermission: true,
       },
     },
@@ -166,7 +166,7 @@ export default new VueRouter({
       meta: {
         type: 'item',
         icon: 'fa fa-map-marker',
-        routerNameDisp: 'Locations',
+        routerNameDisp: 'locations',
         hasPermission: true,
       },
     },
