@@ -11,7 +11,7 @@
                 </a>
               </div>
               <div class="nav-item" v-if="isAuthenticated">
-                <a @click.stop="$router.push({ name: 'Exam Register' })">Exam Register</a>
+                <a @click.stop="$router.push({ name: 'Exam Register' })">{{ $t('header_page.exam_register') }}</a>
               </div>
             </div>
           </div>
@@ -39,7 +39,23 @@
                     </div>
                     <div class="panel-bottom" @click.stop="onClickedLogout()">
                       <i class="fa fa-sign-out"></i>
-                      <span class="btn-logout">Logout</span>
+                      <span class="btn-logout">{{ $t('common.logout') }}</span>
+                    </div>
+                  </div>
+                  <div class="language-popup" v-click-outside="onClickOutside">
+                    <button class="btn btn-language" @click.stop="onClickLanguage()">
+                      <div class="user-avatar">
+                        <i class="fa fa-globe"></i>
+                        <i class="fa fa-caret-down"></i>
+                      </div>
+                    </button>
+                    <div class="dropdown-menu list-language-head" :class="{ 'show': visibleDropdown2 }">
+                      <div class="language-item"
+                           v-for="locale in supportedLocales"
+                           :class="{ active: $i18n.locale === locale }"
+                           @click="updateUserLocale(locale)">
+                        <span>{{ $t(`common.lang_${locale}`) }}</span>
+                      </div>
                     </div>
                   </div>
                   <!-- <button class="btn btn-profile" @click.stop="onClickedLogout()">Logout</button> -->
@@ -50,11 +66,11 @@
                     <span>Sign Up</span>
                     <img class="icon_user" src="images/user.svg" alt="">
                   </router-link> -->
-                  <button class="btn btn-register" @click.stop="$router.push({ name: 'Register' })"
-                    :class="{'active': $route.name === 'Register'}">Register</button>
+                  <!-- <button class="btn btn-register" @click.stop="$router.push({ name: 'Register' })"
+                    :class="{'active': $route.name === 'Register'}">Register</button> -->
                   <!-- <div class="cross-bar"></div> -->
                   <button class="btn btn-login" @click.stop="$router.push({ name: 'Login' })"
-                    :class="{'active': $route.name === 'Login'}">Log In</button>
+                    :class="{'active': $route.name === 'Login'}">{{ $t('common.login') }}</button>
                 </template>
               </div>
             </div>
@@ -74,8 +90,10 @@
       return {
         navShow: false,
         visibleDropdown: false,
+        visibleDropdown2: false,
         params: {},
         isAuthenticated: window.isAuthenticated,
+        supportedLocales: ['en', 'vi'],
       }
     },
     watch: {
@@ -85,14 +103,25 @@
     },
     methods: {
       onClickProfile() {
+        this.visibleDropdown2 = false;
         this.visibleDropdown = !this.visibleDropdown;
+      },
+      onClickLanguage() {
+        this.visibleDropdown = false;
+        this.visibleDropdown2 = !this.visibleDropdown2;
       },
       onClickOutside() {
         this.visibleDropdown = false;
+        this.visibleDropdown2 = false;
       },
       onClickedLogout() {
         AuthenticationUtils.removeAuthenticationData();
         window.location.href = '/';
+      },
+      updateUserLocale(locale) {
+        this.language = locale;
+        this.visibleDropdown2 = false;
+        AuthenticationUtils.setLocale(locale);
       },
       getProfile() {
         rf.getRequest('UserRequest').getProfile().then((res) => {
@@ -141,7 +170,7 @@
         }
       }
       .user-header {
-        display: block;
+        display: flex;
         .form-input {
           display: inline-block;
           margin-top: 18px;
@@ -181,7 +210,7 @@
 
         .list-profile-head {
           position: absolute;
-          right: 0;
+          right: 77px;
           left: auto;
           padding-bottom: 0px;
           width:250px;
@@ -213,6 +242,44 @@
           }
         }
       }
+    }
+  }
+
+  .btn-language {
+    background: #fff;
+    margin-top: 10px;
+    margin-left: 10px;
+    .fa-globe {
+      color: #0a3e69;
+      font-size: 21px;
+    }
+    .fa-caret-down {
+      color: #0a3e69;
+      font-size: 16px;
+      margin-left: 10px;
+    }
+  }
+
+  .list-language-head {
+    position: absolute;
+    left: auto;
+    right: 15px;
+
+    .language-item {
+      cursor: pointer;
+      color: #535a60;
+      &:hover {
+        color: #0c0d0e;
+      }
+
+      span {
+        margin-left: 12px;
+      }
+    }
+
+    .active {
+      background: #e4e6e8;
+      color: #0c0d0e;
     }
   }
 </style>

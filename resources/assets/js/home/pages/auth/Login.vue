@@ -38,7 +38,9 @@
               </div>
               <div class="invalid-feedback" v-if="errors.has('error')">{{ errors.first('error') }}</div>
               <div class="form-group">
-                <button :disabled="isSubmitting" type="button" @click="onClickSubmit" class="btn btn-login">{{ getSubmitName('Login') }}</button>
+                <button :disabled="isSubmitting" type="button" @click="onClickSubmit" class="btn btn-login">
+                  {{ getSubmitName($t('common.login')) }}
+                </button>
               </div>
             </form>
           </div>
