@@ -4,29 +4,29 @@
       <template v-if="check === 0">
         <div class="warning-dialog">
           <i class="fa fa-exclamation-triangle"></i>
-          <span class="warning-message">You are not in this class, so you can't register any schedules here</span>
+          <span class="warning-message">{{ $t('class-schedule.notification_1') }}</span>
         </div>
       </template>
       <template v-else>
         <div class="heading-contain">
           <div class="heading-title">
-            <h1 class="title">Basic Information</h1>
+            <h1 class="title">{{ $t('class-schedule.header') }}</h1>
           </div>
           <div class="heading-status">
-            <label>Register Status: </label>
-            <span>{{ register_status | statusLabel }}</span>
+            <label>{{ $t('class-schedule.register_status') }}: </label>
+            <i>{{ register_status | statusLabel }}</i>
           </div>
           <div class="heading-status">
-            <label>Register Condition: </label>
+            <label>{{ $t('class-schedule.register_condition') }}: </label>
             <span :class="{ 'active': user_status.is_valid === 1 }" class="status-data">
-              {{ user_status.is_valid === 1 ? 'Qualified' : 'Disqualified' }}
+              {{ user_status.is_valid === 1 ? $t('class-schedule.qualified') : $t('class-schedule.disqualified') }}
             </span>
           </div>
         </div>
         <template v-if="user_status.is_valid === 0">
           <div class="warning-dialog">
             <i class="fa fa-exclamation-triangle"></i>
-            <span class="warning-message">You are disqualified to register schedule in this class</span>
+            <span class="warning-message">{{ $t('class-schedule.notification_2') }}</span>
           </div>
         </template>
         <template v-else>
@@ -36,13 +36,13 @@
                         :column="column"
                         :widthTable="'100%'"
                         ref="datatable"
-                        msgEmptyData=""
+                        :msgEmptyData="$t('common.data_empty')"
                         @DataTable:finish="onDatatableFinish" >
-              <th class="col1 text-left" data-sort-field="date">Date</th>
-              <th class="col2 text-left" data-sort-field="start_time">Start_time</th>
-              <th class="col3 text-left" data-sort-field="end_time">End_time</th>
-              <th class="col4 text-left" data-sort-field="room">Location</th>
-              <th class="col5 text-left" data-sort-field="slot">Slot</th>
+              <th class="col1 text-left" data-sort-field="date">{{ $t('class-schedule.date') }}</th>
+              <th class="col2 text-left" data-sort-field="start_time">{{ $t('class-schedule.start_time') }}</th>
+              <th class="col3 text-left" data-sort-field="end_time">{{ $t('class-schedule.end_time') }}</th>
+              <th class="col4 text-left" data-sort-field="room">{{ $t('class-schedule.location') }}</th>
+              <th class="col5 text-left" data-sort-field="slot">{{ $t('class-schedule.slot') }}</th>
               <th class="col6"></th>
 
               <template slot="body" slot-scope="props">
@@ -67,7 +67,7 @@
                       <button class="btn btn-default"
                               v-if="rows[ props.index ].submitable === true"
                               @click="onClickSubmit(props.index)">
-                        Submit
+                        {{ $t('class-schedule.btn_submit') }}
                       </button>
                     </td>
                   </template>
@@ -76,7 +76,7 @@
                       <button class="btn btn-cancel"
                               v-if="rows[ props.index ].cancelable === true"
                               @click="onClickCancel(props.index)">
-                        Cancel
+                        {{ $t('class-schedule.btn_cancel') }}
                       </button>
                     </td>
                   </template>
@@ -109,8 +109,8 @@
     filters: {
       statusLabel: function (val) {
         if(val == 1)
-          return 'Registered';
-        else return 'Not yet';
+          return window.i18n.t('class-schedule.registered');
+        else return window.i18n.t('class-schedule.not_yet');
       },
     },
     methods: {
@@ -148,7 +148,7 @@
         window.ConfirmationModal.show({
           type        : 'confirm',
           title       : '',
-          content     : 'Do you want to submit this schedule?',
+          content     : window.i18n.t('class-schedule.confirm_1'),
           onConfirm   :  () => {
             this.submitSchedule(this.rows[index]);
           },
@@ -161,7 +161,7 @@
         window.ConfirmationModal.show({
           type        : 'confirm',
           title       : '',
-          content     : 'Do you want to cancel this schedule?',
+          content     : window.i18n.t('class-schedule.confirm_2'),
           onConfirm   :  () => {
             this.cancelSchedule(this.rows[index]);
           },
@@ -172,7 +172,7 @@
         this.startSubmit();
         rf.getRequest('ExamRegisterRequest').submitSchedule(params).then(res => {
           this.endSubmit();
-          this.showSuccess('Submit Successfully');
+          this.showSuccess(window.i18n.t('class-schedule.message_submit_successful'));
           rf.getRequest('ExamRegisterRequest').checkUserSchedule(this.$route.params.id).then(res => {
             this.register_status = res.data;
           });
@@ -194,7 +194,7 @@
         this.startSubmit();
         rf.getRequest('ExamRegisterRequest').cancelSchedule(params).then(res => {
           this.endSubmit();
-          this.showSuccess('Submit Successfully');
+          this.showSuccess(window.i18n.t('class-schedule.message_cancel_successful'));
           rf.getRequest('ExamRegisterRequest').checkUserSchedule(this.$route.params.id).then(res => {
             this.register_status = res.data;
           });

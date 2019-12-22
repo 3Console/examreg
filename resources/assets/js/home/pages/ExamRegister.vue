@@ -2,11 +2,11 @@
   <div class="exam-register-page" id="register-page">
     <section class="container pad-12">
       <div class="heading-title">
-        <h1 class="title">Exam Register</h1>
+        <h1 class="title">{{ $t('exam_register_page.header') }}</h1>
       </div>
       <div class="body-contain">
         <div class="semester-heading">
-          <label class="semester-title">Semester: </label>
+          <label class="semester-title">{{ $t('exam_register_page.semester') }}: </label>
           <select name="semester_id"
                   class="form-control semester-form"
                   v-model="semester_id">
@@ -16,20 +16,20 @@
         <template v-if="semester.is_register === 1">
           <div class="duration-heading">
             <i class="fa fa-clock-o"></i>
-            <span>Duration: </span>
+            <span>{{ $t('exam_register_page.duration') }}: </span>
             <span>{{ semester.start_time }} - {{ semester.end_time }}</span>
           </div>
           <div class="class-heading">
-            <label class="class-title">Classes: </label>
+            <label class="class-title">{{ $t('exam_register_page.class') }}: </label>
             <select name="class_option"
                     class="form-control class-form"
                     v-model="class_option">
-              <option value="public">All</option>
-              <option value="private">My Class</option>
+              <option value="public">{{ $t('exam_register_page.all') }}</option>
+              <option value="private">{{ $t('exam_register_page.my_class') }}</option>
             </select>
             <input type="text"
                    name="searchKey"
-                   placeholder="Search"
+                   :placeholder="$t('exam_register_page.search')"
                    class="form-control search-form"
                    v-model="searchKey">
           </div>
@@ -59,7 +59,7 @@
         <template v-else>
           <div class="no-data-semester">
             <img src="/images/check-out.svg">
-            <span>This semester is closed or not chosen</span>
+            <span>{{ $t('exam_register_page.notification') }}</span>
           </div>
         </template>
       </div>

@@ -64,8 +64,8 @@
           type            : '',
           title           : '',
           content         : '',
-          btnCancelLabel  : 'cancel',
-          btnConfirmLabel : 'confirm',
+          btnCancelLabel  : window.i18n.t('common.btn_cancel'),
+          btnConfirmLabel : window.i18n.t('common.btn_confirm'),
           onConfirm       : () => {},
           onCancel        : () => {},
           size            : 'small'

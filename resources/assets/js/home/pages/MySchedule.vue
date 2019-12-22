@@ -2,7 +2,7 @@
   <div class="my-schedule-page">
     <section class="section_body_head">
       <div class="heading-title">
-        <h1 class="title">My Schedule</h1>
+        <h1 class="title">{{ $t('my_schedule_page.header') }}</h1>
       </div>
       <div class="body-contain">
         <div class="group-item">
@@ -19,15 +19,15 @@
                   {{ rows[ props.index ].subject }}
                 </div>
                 <div class="title-time">
-                  <label>Date: </label>
+                  <label>{{ $t('my_schedule_page.date') }}: </label>
                   <span>{{ rows[ props.index ].date }}</span>
                 </div>
                 <div class="title-shift">
-                  <label>Shift: </label>
+                  <label>{{ $t('my_schedule_page.shift') }}: </label>
                   <span>{{ rows[ props.index ].start_time }} - {{ rows[ props.index ].end_time }}</span>
                 </div>
                 <div class="title-address">
-                  <label>Address: </label>
+                  <label>{{ $t('my_schedule_page.address') }}: </label>
                   <span>{{ rows[ props.index ].room }} - {{ rows[ props.index ].address }}</span>
                 </div>
               </div>

@@ -21,11 +21,11 @@
       return {
         listMenu: [
           {
-            text: 'Profile',
+            text: 'side_bar.profile',
             link: '/profile',
           },
           {
-            text: 'My Schedule',
+            text: 'side_bar.my_schedule',
             link: '/schedule',
           },
         ],

@@ -2,7 +2,7 @@
   <div class="profile-page">
     <section class="section_body_head">
       <div class="heading-title">
-        <h1 class="title">Profile</h1>
+        <h1 class="title">{{ $t('profile_page.profile_header') }}</h1>
       </div>
       <div class="body-contain">
         <div class="row">
@@ -13,7 +13,7 @@
             <div class="basic-information">
               <div class="form-group">
                 <div class="info-item">
-                  <label>UserName:</label>
+                  <label>{{ $t('profile_page.user_name') }}:</label>
                   <input
                     name="username"
                     type="text"
@@ -27,7 +27,7 @@
                   <div class="invalid-feedback" v-if="errors.has('username')">{{ errors.first('username') }}</div>
                 </div>
                 <div class="info-item">
-                  <label>Name:</label>
+                  <label>{{ $t('profile_page.full_name') }}:</label>
                   <input
                     name="full_name"
                     type="text"
@@ -41,7 +41,7 @@
                   <div class="invalid-feedback" v-if="errors.has('full_name')">{{ errors.first('full_name') }}</div>
                 </div>
                 <div class="info-item">
-                  <label>MSV:</label>
+                  <label>{{ $t('profile_page.msv') }}:</label>
                   <input
                     name="msv"
                     type="text"
@@ -55,7 +55,7 @@
                   <div class="invalid-feedback" v-if="errors.has('msv')">{{ errors.first('msv') }}</div>
                 </div>
                 <div class="info-item">
-                  <label>Date of birth:</label>
+                  <label>{{ $t('profile_page.dob') }}:</label>
                   <input
                     name="dob"
                     type="text"
@@ -69,7 +69,7 @@
                   <div class="invalid-feedback" v-if="errors.has('dob')">{{ errors.first('dob') }}</div>
                 </div>
                 <div class="info-item">
-                  <label>Course:</label>
+                  <label>{{ $t('profile_page.course') }}:</label>
                   <input
                     name="course"
                     type="text"
@@ -83,7 +83,7 @@
                   <div class="invalid-feedback" v-if="errors.has('course')">{{ errors.first('course') }}</div>
                 </div>
                 <div class="info-item">
-                  <label>Unit:</label>
+                  <label>{{ $t('profile_page.unit') }}:</label>
                   <input
                     name="unit"
                     type="text"
@@ -96,7 +96,7 @@
                     :class="{ error: errors.has('unit') }">
                   <div class="invalid-feedback" v-if="errors.has('unit')">{{ errors.first('unit') }}</div>
                 </div>
-                <div class="info-item">
+                <!-- <div class="info-item">
                   <label>Bio:</label>
                   <textarea
                     name="bio"
@@ -108,7 +108,7 @@
                     @focus="resetError"
                     :class="{ error: errors.has('bio') }" />
                   <div class="invalid-feedback" v-if="errors.has('bio')">{{ errors.first('bio') }}</div>
-                </div>
+                </div> -->
               </div>
             </div>
           </div>
