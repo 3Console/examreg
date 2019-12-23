@@ -172,6 +172,11 @@
         }
         else this.status = 0;
       },
+      'searchKey' (newValue) {
+        setTimeout(() => {
+          this.search()
+        }, 500);
+      },
     },
     methods: {
       onDatatableFinish() {

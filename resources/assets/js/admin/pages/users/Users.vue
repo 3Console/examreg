@@ -132,6 +132,13 @@
         }
       },
     },
+    watch: {
+      'searchKey' (newValue) {
+        setTimeout(() => {
+          this.search()
+        }, 500);
+      },
+    },
     methods: {
       onDatatableFinish() {
         this.rows = this.$refs.datatable.rows;

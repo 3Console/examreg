@@ -4,7 +4,7 @@
       <div class="col-md-4">
         <div class="card">
           <div class="card-body">
-            <img src="/images/default-logo.png">
+            <img src="/images/uet-logo.png">
             <div class="text-center wrap-text-login">
               <span class="text-login">{{ $t('common.login') }}</span>
             </div>
@@ -89,6 +89,9 @@
               return;
             }
             this.convertRemoteErrors(error);
+            if (this.errors.has('error')) {
+              this.showError(error.response.data.message);
+            }
           });
       },
     },
@@ -124,14 +127,19 @@
         line-height: normal;
         letter-spacing: normal;
         font-size: 15px;
-        background-color: #009974;
-        border-color: #009974;
+        background-color: #0a3e69;
+        border-color: #0a3e69;
         color: #fff;
+        &:hover {
+          color: #053064;
+          background: #fff;
+          text-decoration: none;
+        }
       }
     }
 
     .text-login {
-      color: #009974;
+      color: #053064;
       font-size: 30px;
       text-align: center;
       width: 119px;

@@ -7,7 +7,7 @@
             <div class="row">
               <div class="logo">
                 <a @click.stop="$router.push({ name: 'Landing' })" class="box_logo">
-                  <img src="/images/eaton-logo-design.jpg" alt="">
+                  <img src="/images/uet-logo-2.jpeg" alt="">
                 </a>
               </div>
               <div class="nav-item" v-if="isAuthenticated">

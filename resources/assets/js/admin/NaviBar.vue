@@ -7,7 +7,7 @@
       <!-- <span class="logo-mini"><img src="/images/logo.png" alt=""></span> -->
       <!-- logo for regular state and mobile devices -->
       <span class="logo-lg">
-        <img src="/images/default-logo.png">
+        <img src="/images/uet-logo.png">
         <span>ExamReg</span>
       </span>
     </a>
