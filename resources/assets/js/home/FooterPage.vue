@@ -2,8 +2,25 @@
   <div id="page-footer">
     <div class="container">
       <div class="row">
-        <div class="col-md-9">
-          <span class="footer-text">FOOTER HERE WITH SOCIAL MEDIA TAGS, COPYRIGHT ETC.</span>
+        <div class="col-md-5">
+          <div class="footer-title">
+            <img src="/images/uet-logo.png" alt="">
+            <span>Examreg</span>
+          </div>
+          <div class="footer-text">
+            <span class="footer-text-normal">{{ $t('footer_page.text_1') }}</span>
+            <span class="footer-text-normal">{{ $t('footer_page.text_2') }}</span>
+          </div>
+        </div>
+        <div class="col-md-4" style="padding-top: 10px;">
+          <div class="footer-title">
+            <span style="margin-left: 0px;">{{ $t('footer_page.text_3') }}</span>
+          </div>
+          <div class="footer-text">
+            <span class="footer-text-normal">{{ $t('footer_page.text_4') }}: 024.37547.461</span>
+            <span class="footer-text-normal">Fax: 024.37547.460</span>
+            <span class="footer-text-normal">Email: admin@examreg.com</span>
+          </div>
         </div>
         <div class="col-md-3">
           <div class="language-popup" v-click-outside="onClickOutside">
@@ -65,12 +82,28 @@
     padding: 70px 0px 70px 0px;
     background-color: #242729;
     // text-align: center;
+    .footer-title {
+      color: #fff;
+      margin-bottom: 20px;
+      img {
+        width: 50px;
+      }
+      span {
+        font-size: 24px;
+        margin-left: 20px;
+        text-transform: uppercase;
+        vertical-align: middle;
+      }
+    }
+
     .footer-text {
-      font-size: 24.7px;
-      font-weight: bold;
-      line-height: 1.29;
-      letter-spacing: 0.5px;
-      color: #607d9d;
+      color: #fff;
+      display: grid;
+
+      .footer-text-normal {
+        font-size: 14px;
+        margin-left: 0px;
+      }
     }
 
     .language-popup {
@@ -97,6 +130,7 @@
       .list-language-head {
         position: absolute;
         left: auto;
+        top: auto;
         right: 15px;
         padding:6px 12px;
 

@@ -70,6 +70,10 @@ export default {
     "class-schedule.confirm_2": "Do you want to cancel this schedule?",
     "class-schedule.message_submit_successful": "Submit Successfully",
     "class-schedule.message_cancel_successful": "Cancel Successfully",
+    "footer_page.text_1": "University of Engineering and Technology, Vietnam National University",
+    "footer_page.text_2": "Address: E3, 144 Xuan Thuy, Cau Giay, Ha Noi",
+    "footer_page.text_3": "Contact Us",
+    "footer_page.text_4": "TEL",
   },
   "vi" : {
     "common.window_title": "Examreg",
@@ -140,5 +144,9 @@ export default {
     "class-schedule.confirm_2": "Bạn có muốn hủy lịch thi này?",
     "class-schedule.message_submit_successful": "Đăng kí thành công",
     "class-schedule.message_cancel_successful": "Hủy thành công",
+    "footer_page.text_1": "Trường Đại học Công nghệ, Đại học Quốc Gia Hà Nội",
+    "footer_page.text_2": "Địa chỉ: E3, 144 Xuân Thủy, Cầu Giấy, Hà Nội",
+    "footer_page.text_3": "Liên hệ với chúng tôi",
+    "footer_page.text_4": "Điện thoại",
   }
 };
