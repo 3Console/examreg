@@ -3,11 +3,11 @@
     <section class="clearfix">
       <div class="filter_container clearfix">
         <button type="button" class="btn btn-create-schedule" @click.stop="onClickCreateSchedule()">
-          <span class="icon-plus"></span> Create new schedule
+          <span class="icon-plus"></span> {{ $t('schedule.btn_create') }}
         </button>
         <span class="search_box">
           <input type="text"
-                 placeholder="Search"
+                 :placeholder="$t('common.placeholders.search')"
                  v-on:keyup.enter="search"
                  class="form-control search_input"
                  name="searchKey"
@@ -22,13 +22,13 @@
                     :column="column"
                     ref="datatable"
                     @DataTable:finish="onDatatableFinish">
-          <th class="col1 text-left">ID</th>
-          <th class="col2 text-left" data-sort-field="subject">Subject</th>
-          <th class="col3 text-left" data-sort-field="start_time">Start_time</th>
-          <th class="col4 text-left" data-sort-field="end_time">End_time</th>
-          <th class="col5 text-left">Location</th>
-          <th class="col6 text-left" data-sort-field="date">Date</th>
-          <th class="col7 text-right">Actions</th>
+          <th class="col1 text-left">{{ $t('schedule.id') }}</th>
+          <th class="col2 text-left" data-sort-field="subject">{{ $t('schedule.subject') }}</th>
+          <th class="col3 text-left" data-sort-field="start_time">{{ $t('schedule.start_time') }}</th>
+          <th class="col4 text-left" data-sort-field="end_time">{{ $t('schedule.end_time') }}</th>
+          <th class="col5 text-left">{{ $t('schedule.location') }}</th>
+          <th class="col6 text-left" data-sort-field="date">{{ $t('schedule.date') }}</th>
+          <th class="col7 text-right">{{ $t('schedule.action') }}</th>
 
           <template slot="body" slot-scope="props">
             <template v-if="rows[ props.index ].editable === false">
@@ -150,7 +150,7 @@
     mixins: [RemoveErrorsMixin],
     data() {
       return {
-        titlePage: 'Schedules',
+        titlePage: this.$t('schedule.header'),
         searchKey: '',
         params: {},
         limit: 10,
@@ -289,7 +289,7 @@
         window.ConfirmationModal.show({
           type        : 'confirm',
           title       : '',
-          content     : 'Do you want to remove this schedule?',
+          content     : window.i18n.t("schedule.message_remove"),
           onConfirm   :  () => {
             this.onClickRemoveSchedule();
           },

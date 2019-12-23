@@ -3,11 +3,11 @@
     <section class="clearfix">
       <div class="filter_container clearfix">
         <button type="button" class="btn btn-create-shift" @click.stop="onClickCreateShift()">
-          <span class="icon-plus"></span> Create new shift
+          <span class="icon-plus"></span> {{ $t('shift.btn_create') }}
         </button>
         <span class="search_box">
           <input type="text"
-                 placeholder="Search"
+                 :placeholder="$t('common.placeholders.search')"
                  v-on:keyup.enter="search"
                  class="form-control search_input"
                  name="searchKey"
@@ -22,10 +22,10 @@
                     :column="column"
                     ref="datatable"
                     @DataTable:finish="onDatatableFinish">
-          <th class="col1 text-left">ID</th>
-          <th class="col2 text-left" data-sort-field="start_time">Start_time</th>
-          <th class="col3 text-left" data-sort-field="end_time">End_time</th>
-          <th class="col4 text-right">Actions</th>
+          <th class="col1 text-left">{{ $t('shift.id') }}</th>
+          <th class="col2 text-left" data-sort-field="start_time">{{ $t('shift.start_time') }}</th>
+          <th class="col3 text-left" data-sort-field="end_time">{{ $t('shift.end_time') }}</th>
+          <th class="col4 text-right">{{ $t('shift.action') }}</th>
 
           <template slot="body" slot-scope="props">
             <template v-if="rows[ props.index ].editable === false">
@@ -103,7 +103,7 @@
     mixins: [RemoveErrorsMixin],
     data() {
       return {
-        titlePage: 'Shifts',
+        titlePage: this.$t('shift.header'),
         searchKey: '',
         params: {},
         limit: 10,
@@ -215,7 +215,7 @@
         window.ConfirmationModal.show({
           type        : 'confirm',
           title       : '',
-          content     : 'Do you want to remove this shift?',
+          content     : window.i18n.t("shift.message_remove"),
           onConfirm   :  () => {
             this.onClickRemoveShift();
           },

@@ -4,7 +4,7 @@
       
     <div class="filter_container clearfix">
       <button type="button" class="btn btn-create-user" @click.stop="showFileInput">
-        <span class="icon-plus"></span> Import CSV
+        <span class="icon-plus"></span> {{ $t('user.import_csv') }}
       </button>
       <span class="file-name">{{ fileCSV ? fileCSV.name : '' }}</span>
       <input type="file" class="custom-file-input"
@@ -22,9 +22,14 @@
       <div v-show="errors.has('file')" class="error has-error" id="error">
         {{ errors.first('file') }}
       </div>
-      <button type="button" class="btn btn-create-user" v-if="fileCSV" @click="uploadCSV">Submit</button>
+      <button type="button" class="btn btn-create-user" v-if="fileCSV" @click="uploadCSV">{{ $t('common.action.submit') }}</button>
       <span class="search_box">
-        <input type="text" placeholder="Search"v-on:keyup.enter="search" class="form-control search_input" name="searchKey" v-model="searchKey"/>
+        <input type="text"
+               :placeholder="$t('common.placeholders.search')"
+               v-on:keyup.enter="search"
+               class="form-control search_input"
+               name="searchKey"
+               v-model="searchKey"/>
       </span>
     </div>
 
@@ -32,12 +37,12 @@
 
     <div class="datatable">
         <data-table :getData="getData" ref="datatable" :limit="10" :column="6" @DataTable:finish="onDatatableFinish" class="scroll">
-          <th class="cl0 text-left">ID</th>
-          <th class="cl1 text-left" data-sort-field="msv">MSV</th>
+          <th class="cl0 text-left">{{ $t('user.id') }}</th>
+          <th class="cl1 text-left" data-sort-field="msv">{{ $t('user.msv') }}</th>
           <th class="cl1 text-left" data-sort-field="full_name">{{ $t('user.full_name') }}</th>
           <th class="cl1 text-left" data-sort-field="username">{{ $t('user.username') }}</th>
           <th class="cl2 text-left" data-sort-field="email">{{ $t('user.email') }}</th>
-          <th class="cl3 text-left" data-sort-field="unit">Unit</th>
+          <th class="cl3 text-left" data-sort-field="unit">{{ $t('user.unit') }}</th>
           <template slot="body" slot-scope="props">
             <tr>
               <td class="cl0 text-left">

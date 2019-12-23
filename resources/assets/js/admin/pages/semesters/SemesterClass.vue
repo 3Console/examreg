@@ -4,11 +4,11 @@
       <div class="filter_container clearfix">
         <h4 class="title">{{ title }}</h4>
         <button type="button" class="btn btn-create-student" @click.stop="onClickCreateClass()">
-          <span class="icon-plus"></span> Create new class
+          <span class="icon-plus"></span> {{ $t('semester_class.btn_create') }}
         </button>
         <span class="search_box">
           <input type="text"
-                 placeholder="Search"
+                 :placeholder="$t('common.placeholders.search')"
                  v-on:keyup.enter="search"
                  class="form-control search_input"
                  name="searchKey"
@@ -22,9 +22,9 @@
                     :column="column"
                     ref="datatable"
                     @DataTable:finish="onDatatableFinish">
-          <th class="col1 text-left">ID</th>
-          <th class="col2 text-left" data-sort-field="subject">Subject</th>
-          <th class="col3 text-right">Actions</th>
+          <th class="col1 text-left">{{ $t('semester_class.id') }}</th>
+          <th class="col2 text-left" data-sort-field="subject">{{ $t('semester_class.subject') }}</th>
+          <th class="col3 text-right">{{ $t('semester_class.action') }}</th>
 
           <template slot="body" slot-scope="props">
             <template v-if="rows[ props.index ].editable === false">
@@ -93,7 +93,7 @@
       return {
         id: undefined,
         title: '',
-        titlePage: 'Semester',
+        titlePage: this.$t('semester.header'),
         searchKey: '',
         limit: 10,
         column: 3,
@@ -220,7 +220,7 @@
         window.ConfirmationModal.show({
           type        : 'confirm',
           title       : '',
-          content     : 'Do you want to remove this student?',
+          content     : window.i18n.t("semester_class.message_remove"),
           onConfirm   :  () => {
             this.onClickRemoveStudent();
           },

@@ -3,52 +3,48 @@
     <section class="clearfix">
       <div class="filter_container clearfix">
         <button type="button" class="btn btn-print" @click="print">
-          <i class="fa fa-print"></i> Print
+          <i class="fa fa-print"></i> {{ $t('schedule_detail.print') }}
         </button>
         <div class="document-container" id="document" style="margin-top: 10px; background-color: #fff; padding: 12px;">
           <div class="document-header" style="text-align: center;">
             <div class="row">
               <div class="col-md-5">
                 <div class="header-left" style="font-size: 14px; text-transform: uppercase;">
-                  Vietnam National University
+                  {{ $t('schedule_detail.header_left_1') }}
                 </div>
                 <div class="header-left-mini" style="font-size: 14px; text-transform: uppercase; font-weight: bold;">
-                  University of Engineering and Technology
+                  {{ $t('schedule_detail.header_left_2') }}
                 </div>
               </div>
               <div class="col-md-7">
                 <div class="header-right" style="font-size: 14px; text-transform: uppercase; font-weight: bold;">
-                  Socialist Republic of Vietnam
+                  {{ $t('schedule_detail.header_right_1') }}
                 </div>
                 <div class="header-right-mini" style="font-size: 12px; font-weight: bold;">
-                  Independence - Freedom - Happiness
+                  {{ $t('schedule_detail.header_right_2') }}
                 </div>
               </div>
             </div>
           </div>
           <div class="document-body" style="margin-top: 20px;">
             <div class="document-title" style="font-size: 20px; text-align: center; text-transform: uppercase; font-weight: bold;">
-              List Student
+              {{ $t('schedule_detail.title') }}
             </div>
             <div class="list-item">
               <div class="item-container" style="display: flex;">
-                <label class="item-title" style="margin-right: 10px; font-weight: bold;">Subject: </label>
+                <label class="item-title" style="margin-right: 10px; font-weight: bold;">{{ $t('schedule_detail.subject') }}: </label>
                 <div class="item-data">{{ schedule.subject }}</div>
               </div>
               <div class="item-container" style="display: flex;">
-                <label class="item-title" style="margin-right: 10px; font-weight: bold;">Lecturer: </label>
-                <div class="item-data">{{ schedule.lecturer }}</div>
-              </div>
-              <div class="item-container" style="display: flex;">
-                <label class="item-title" style="margin-right: 10px; font-weight: bold;">Shift: </label>
+                <label class="item-title" style="margin-right: 10px; font-weight: bold;">{{ $t('schedule_detail.shift') }}: </label>
                 <div class="item-data">{{ schedule.start_time }} - {{ schedule.end_time }}</div>
               </div>
               <div class="item-container" style="display: flex;">
-                <label class="item-title" style="margin-right: 10px; font-weight: bold;">Location: </label>
+                <label class="item-title" style="margin-right: 10px; font-weight: bold;">{{ $t('schedule_detail.location') }}: </label>
                 <div class="item-data">{{ schedule.room }} - {{ schedule.address }}</div>
               </div>
               <div class="item-container" style="display: flex;">
-                <label class="item-title" style="margin-right: 10px; font-weight: bold;">Date: </label>
+                <label class="item-title" style="margin-right: 10px; font-weight: bold;">{{ $t('schedule_detail.date') }}: </label>
                 <div class="item-data">{{ schedule.date }}</div>
               </div>
             </div>
@@ -56,12 +52,12 @@
               <table style="width: 100%; border: 1px solid #d8d8d8;">
                 <thead>
                   <tr>
-                    <th class="col1 text-center" style="border: 1px solid #d8d8d8; width: 50px;">No</th>
-                    <th class="col2 text-center" style="border: 1px solid #d8d8d8; width: 150px;">MSV</th>
-                    <th class="col3 text-center" style="border: 1px solid #d8d8d8; width: 250px;">Name</th>
-                    <th class="col4 text-center" style="border: 1px solid #d8d8d8; width: 150px;">Date of birth</th>
-                    <th class="col5 text-center" style="border: 1px solid #d8d8d8; width: 250px;">Course</th>
-                    <th class="col6 text-center" style="border: 1px solid #d8d8d8; width: 150px;">Signature</th>
+                    <th class="col1 text-center" style="border: 1px solid #d8d8d8; width: 50px;">{{ $t('schedule_detail.no') }}</th>
+                    <th class="col2 text-center" style="border: 1px solid #d8d8d8; width: 150px;">{{ $t('schedule_detail.msv') }}</th>
+                    <th class="col3 text-center" style="border: 1px solid #d8d8d8; width: 250px;">{{ $t('schedule_detail.name') }}</th>
+                    <th class="col4 text-center" style="border: 1px solid #d8d8d8; width: 150px;">{{ $t('schedule_detail.dob') }}</th>
+                    <th class="col5 text-center" style="border: 1px solid #d8d8d8; width: 250px;">{{ $t('schedule_detail.course') }}</th>
+                    <th class="col6 text-center" style="border: 1px solid #d8d8d8; width: 150px;">{{ $t('schedule_detail.signature') }}</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -92,10 +88,10 @@
               <div class="col-md-6"></div>
               <div class="col-md-6">
                 <div class="time-confirmation" style="text-align: center; font-size: 14px;">
-                  Ha Noi, .../.../2019
+                  {{ $t('schedule_detail.footer_right_1') }}
                 </div>
                 <div class="heading-confirmation" style="text-align: center; text-transform: uppercase; font-size: 14px; font-weight: bold;">
-                  Confirmation of Training Room
+                  {{ $t('schedule_detail.footer_right_2') }}
                 </div>
               </div>
             </div>
@@ -114,7 +110,7 @@
     data() {
       return {
         id: undefined,
-        titlePage: 'Semester',
+        titlePage: this.$t('schedule.header'),
         schedule: {},
         students: [],
         searchKey: '',

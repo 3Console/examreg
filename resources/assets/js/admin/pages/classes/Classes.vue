@@ -3,11 +3,11 @@
     <section class="clearfix">
       <div class="filter_container clearfix">
         <button type="button" class="btn btn-create-classes" @click.stop="onClickCreateClass()">
-          <span class="icon-plus"></span> Create new class
+          <span class="icon-plus"></span> {{ $t('class.btn_create') }}
         </button>
         <span class="search_box">
           <input type="text"
-                 placeholder="Search"
+                 :placeholder="$t('common.placeholders.search')"
                  v-on:keyup.enter="search"
                  class="form-control search_input"
                  name="searchKey"
@@ -22,9 +22,9 @@
                     :column="column"
                     ref="datatable"
                     @DataTable:finish="onDatatableFinish">
-          <th class="col1 text-left">ID</th>
-          <th class="col2 text-left" data-sort-field="subject">Subject</th>
-          <th class="col3 text-right">Actions</th>
+          <th class="col1 text-left">{{ $t('class.id') }}</th>
+          <th class="col2 text-left" data-sort-field="subject">{{ $t('class.subject') }}</th>
+          <th class="col3 text-right">{{ $t('class.action') }}</th>
 
           <template slot="body" slot-scope="props">
             <template v-if="rows[ props.index ].editable === false">
@@ -86,7 +86,7 @@
     mixins: [RemoveErrorsMixin],
     data() {
       return {
-        titlePage: 'Classes',
+        titlePage: this.$t('class.header'),
         searchKey: '',
         params: {},
         limit: 10,
@@ -201,7 +201,7 @@
         window.ConfirmationModal.show({
           type        : 'confirm',
           title       : '',
-          content     : 'Do you want to remove this class?',
+          content     : window.i18n.t("class.message_remove"),
           onConfirm   :  () => {
             this.onClickRemoveClass();
           },

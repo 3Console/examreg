@@ -65,8 +65,8 @@
           type            : '',
           title           : '',
           content         : '',
-          btnCancelLabel  : this.$t('common.action.cancel'),
-          btnConfirmLabel : this.$t('common.action.confirm'),
+          btnCancelLabel  : this.$t('configs.btnCancelLabel'),
+          btnConfirmLabel : this.$t('configs.btnConfirmLabel'),
           onConfirm       : () => {},
           onCancel        : () => {},
           size            : 'small'

@@ -3,11 +3,11 @@
     <section class="clearfix">
       <div class="filter_container clearfix">
         <button type="button" class="btn btn-create-location" @click.stop="onClickCreateLocation()">
-          <span class="icon-plus"></span> Create new location
+          <span class="icon-plus"></span> {{ $t('location.btn_create') }}
         </button>
         <span class="search_box">
           <input type="text"
-                 placeholder="Search"
+                 :placeholder="$t('common.placeholders.search')"
                  v-on:keyup.enter="search"
                  class="form-control search_input"
                  name="searchKey"
@@ -22,11 +22,11 @@
                     :column="column"
                     ref="datatable"
                     @DataTable:finish="onDatatableFinish">
-          <th class="col1 text-left">ID</th>
-          <th class="col2 text-left" data-sort-field="room">Room</th>
-          <th class="col3 text-left" data-sort-field="address">Address</th>
-          <th class="col4 text-left" data-sort-field="slot">Slot</th>
-          <th class="col5 text-right">Actions</th>
+          <th class="col1 text-left">{{ $t('location.id') }}</th>
+          <th class="col2 text-left" data-sort-field="room">{{ $t('location.room') }}</th>
+          <th class="col3 text-left" data-sort-field="address">{{ $t('location.address') }}</th>
+          <th class="col4 text-left" data-sort-field="slot">{{ $t('location.slot') }}</th>
+          <th class="col5 text-right">{{ $t('location.action') }}</th>
 
           <template slot="body" slot-scope="props">
             <template v-if="rows[ props.index ].editable === false">
@@ -120,7 +120,7 @@
     mixins: [RemoveErrorsMixin],
     data() {
       return {
-        titlePage: 'Location',
+        titlePage: this.$t('location.header'),
         searchKey: '',
         params: {},
         limit: 10,
@@ -233,7 +233,7 @@
         window.ConfirmationModal.show({
           type        : 'confirm',
           title       : '',
-          content     : 'Do you want to remove this location?',
+          content     : window.i18n.t("location.message_remove"),
           onConfirm   :  () => {
             this.onClickRemoveLocation();
           },

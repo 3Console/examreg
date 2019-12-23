@@ -13,7 +13,7 @@
         <tr>
           <td :colspan="column" class="no_data_row">
             <img src="/images/no-data.svg">
-            <span>There is no data</span>
+            <span>{{ $t('common.empty_data') }}</span>
           </td>
         </tr>
       </template>

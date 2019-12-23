@@ -3,11 +3,11 @@
     <section class="clearfix">
       <div class="filter_container clearfix">
         <button type="button" class="btn btn-create-semester" @click.stop="onClickCreateSemester()">
-          <span class="icon-plus"></span> Create new semester
+          <span class="icon-plus"></span> {{ $t('semester.btn_create') }}
         </button>
         <span class="search_box">
           <input type="text"
-                 placeholder="Search"
+                 :placeholder="$t('common.placeholders.search')"
                  v-on:keyup.enter="search"
                  class="form-control search_input"
                  name="searchKey"
@@ -22,12 +22,12 @@
                     :column="column"
                     ref="datatable"
                     @DataTable:finish="onDatatableFinish">
-          <th class="col1 text-left">ID</th>
-          <th class="col2 text-left" data-sort-field="name">Name</th>
-          <th class="col3 text-left" data-sort-field="start_time">Start_time</th>
-          <th class="col4 text-left" data-sort-field="end_time">End_time</th>
-          <th class="col5 text-left" data-sort-field="is_register">Status</th>
-          <th class="col6 text-right">Actions</th>
+          <th class="col1 text-left">{{ $t('semester.id') }}</th>
+          <th class="col2 text-left" data-sort-field="name">{{ $t('semester.name') }}</th>
+          <th class="col3 text-left" data-sort-field="start_time">{{ $t('semester.start_time') }}</th>
+          <th class="col4 text-left" data-sort-field="end_time">{{ $t('semester.end_time') }}</th>
+          <th class="col5 text-left" data-sort-field="is_register">{{ $t('semester.status') }}</th>
+          <th class="col6 text-right">{{ $t('semester.action') }}</th>
 
           <template slot="body" slot-scope="props">
             <template v-if="rows[ props.index ].editable === false">
@@ -147,7 +147,7 @@
     mixins: [RemoveErrorsMixin],
     data() {
       return {
-        titlePage: 'Semester',
+        titlePage: this.$t('semester.header'),
         searchKey: '',
         params: {},
         limit: 10,
@@ -282,7 +282,7 @@
         window.ConfirmationModal.show({
           type        : 'confirm',
           title       : '',
-          content     : 'Do you want to remove this semester?',
+          content     : window.i18n.t("semester.message_remove"),
           onConfirm   :  () => {
             this.onClickRemoveSemester();
           },

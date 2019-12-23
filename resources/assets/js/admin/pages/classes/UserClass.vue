@@ -4,10 +4,10 @@
       <div class="filter_container clearfix">
         <h4 class="title">{{ title }}</h4>
         <button type="button" class="btn btn-create-student" @click.stop="onClickCreateStudent()">
-          <span class="icon-plus"></span> Create new student
+          <span class="icon-plus"></span> {{ $t('user_class.btn_create') }}
         </button>
         <button type="button" class="btn btn-create-student" @click.stop="showFileInput">
-          <span class="icon-plus"></span> Import CSV
+          <span class="icon-plus"></span> {{ $t('user_class.import_csv') }}
         </button>
         <span class="file-name">{{ fileCSV ? fileCSV.name : '' }}</span>
         <input type="file" class="custom-file-input"
@@ -25,24 +25,15 @@
         <div v-show="errors.has('file')" class="error has-error" id="error">
           {{ errors.first('file') }}
         </div>
-        <button type="button" class="btn btn-create-student" v-if="fileCSV" @click="uploadStudentCSV">Submit</button>
+        <button type="button" class="btn btn-create-student" v-if="fileCSV" @click="uploadStudentCSV">{{ $t('common.action.submit') }}</button>
         <span class="search_box">
           <input type="text"
-                 placeholder="Search"
+                 :placeholder="$t('common.placeholders.search')"
                  v-on:keyup.enter="search"
                  class="form-control search_input"
                  name="searchKey"
                  v-model="searchKey"/>
         </span>
-        <div class="filter_box">
-          <i class="fa fa-filter"></i>
-          <span>Filter: </span>
-          <select class="form-control" v-model="params.is_valid">
-            <option>All</option>
-            <option>Qualified</option>
-            <option>Disqualified</option>
-          </select>
-        </div>
       </div>
       <div class="datatable">
         <data-table :getData="getData"
@@ -51,10 +42,10 @@
                     :column="column"
                     ref="datatable"
                     @DataTable:finish="onDatatableFinish">
-          <th class="col1 text-left">ID</th>
-          <th class="col2 text-left" data-sort-field="full_name">Name</th>
-          <th class="col3 text-left" data-sort-field="is_valid">Status</th>
-          <th class="col4 text-right">Actions</th>
+          <th class="col1 text-left">{{ $t('user_class.id') }}</th>
+          <th class="col2 text-left" data-sort-field="full_name">{{ $t('user_class.name') }}</th>
+          <th class="col3 text-left" data-sort-field="is_valid">{{ $t('user_class.status') }}</th>
+          <th class="col4 text-right">{{ $t('user_class.action') }}</th>
 
           <template slot="body" slot-scope="props">
             <template v-if="rows[ props.index ].editable === false">
@@ -65,7 +56,8 @@
                 <td class="col2 text-left">
                   {{ rows[ props.index ].full_name }}
                 </td>
-                <td class="col3 text-left" :class="rows[ props.index ].is_valid === 1 ? 'qualified' : 'disqualified'">
+                <td class="col3 text-left"
+                    :class="rows[ props.index ].is_valid === 1 ? 'qualified' : 'disqualified'">
                   {{ rows[ props.index ].is_valid | statusLabel }}
                 </td>
                 <td class="col5 text-right">
@@ -97,13 +89,13 @@
                 <td class="col3 text-left">
                   <select name="is_valid"
                           class="form-control"
-                          data-vv-as="unit_class"
+                          data-vv-as="is_valid"
                           v-validate="'required'"
                           data-vv-validate-on="none"
                           @focus="resetError"
                           v-model="params.is_valid" >
-                    <option value="1" selected>Qualified</option>
-                    <option value="0">Disqualified</option>
+                    <option value="1" selected>{{ $t('user_class.qualified') }}</option>
+                    <option value="0">{{ $t('user_class.disqualified') }}</option>
                   </select>
                   <span v-show="errors.has('is_valid')" class="error has-error">
                     {{ errors.first('is_valid') }}
@@ -175,7 +167,7 @@
       return {
         id: undefined,
         title: '',
-        titlePage: 'Class',
+        titlePage: this.$t('class.header'),
         searchKey: '',
         limit: 10,
         column: 4,
@@ -192,8 +184,8 @@
     filters: {
       statusLabel: function (val) {
         if(val == 1)
-          return 'Qualified';
-        else return 'Disqualified';
+          return window.i18n.t("user_class.qualified");
+        else return window.i18n.t("user_class.disqualified");
       },
     },
     methods: {
@@ -366,7 +358,7 @@
         window.ConfirmationModal.show({
           type        : 'confirm',
           title       : '',
-          content     : 'Do you want to remove this student?',
+          content     : window.i18n.t("user_class.message_remove"),
           onConfirm   :  () => {
             this.onClickRemoveStudent();
           },

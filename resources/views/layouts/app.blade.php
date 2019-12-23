@@ -31,7 +31,6 @@
     {{-- Stripe payment --}}
     {{-- <script src="https://js.stripe.com/v3/"></script> --}}
 
-    {{-- Gamelancer app --}}
     <script src="{{ mix('js/app.js') }}"></script>
 </body>
 </html>
