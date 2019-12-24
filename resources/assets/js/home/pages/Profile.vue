@@ -23,7 +23,8 @@
                     v-validate="'required'"
                     v-model="params.username"
                     @focus="resetError"
-                    :class="{ error: errors.has('username') }">
+                    :class="{ error: errors.has('username') }"
+                    disabled>
                   <div class="invalid-feedback" v-if="errors.has('username')">{{ errors.first('username') }}</div>
                 </div>
                 <div class="info-item">
@@ -37,7 +38,8 @@
                     v-validate="'required'"
                     v-model="params.full_name"
                     @focus="resetError"
-                    :class="{ error: errors.has('full_name') }">
+                    :class="{ error: errors.has('full_name') }"
+                    disabled>
                   <div class="invalid-feedback" v-if="errors.has('full_name')">{{ errors.first('full_name') }}</div>
                 </div>
                 <div class="info-item">
@@ -51,7 +53,8 @@
                     v-validate="'required'"
                     v-model="params.msv"
                     @focus="resetError"
-                    :class="{ error: errors.has('msv') }">
+                    :class="{ error: errors.has('msv') }"
+                    disabled>
                   <div class="invalid-feedback" v-if="errors.has('msv')">{{ errors.first('msv') }}</div>
                 </div>
                 <div class="info-item">
@@ -65,7 +68,8 @@
                     v-validate="'required'"
                     v-model="params.dob"
                     @focus="resetError"
-                    :class="{ error: errors.has('dob') }">
+                    :class="{ error: errors.has('dob') }"
+                    disabled>
                   <div class="invalid-feedback" v-if="errors.has('dob')">{{ errors.first('dob') }}</div>
                 </div>
                 <div class="info-item">
@@ -79,7 +83,8 @@
                     v-validate="'required'"
                     v-model="params.course"
                     @focus="resetError"
-                    :class="{ error: errors.has('course') }">
+                    :class="{ error: errors.has('course') }"
+                    disabled>
                   <div class="invalid-feedback" v-if="errors.has('course')">{{ errors.first('course') }}</div>
                 </div>
                 <div class="info-item">
@@ -93,7 +98,8 @@
                     v-validate="'required'"
                     v-model="params.unit"
                     @focus="resetError"
-                    :class="{ error: errors.has('unit') }">
+                    :class="{ error: errors.has('unit') }"
+                    disabled>
                   <div class="invalid-feedback" v-if="errors.has('unit')">{{ errors.first('unit') }}</div>
                 </div>
                 <!-- <div class="info-item">
