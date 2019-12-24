@@ -435,7 +435,8 @@ class AdminService {
                         ->when(!empty($input['search_key']), function ($query) use ($input) {
                             $searchKey = $input['search_key'];
                             return $query->where(function ($q) use ($searchKey) {
-                                $q->where('users.full_name', 'like', '%' . $searchKey . '%');
+                                $q->where('users.full_name', 'like', '%' . $searchKey . '%')
+                                ->orWhere('user_classes.is_valid', 'like', '%' . $searchKey . '%');
                             });
                         })
                         ->paginate(array_get($input, 'limit', Consts::DEFAULT_PER_PAGE));

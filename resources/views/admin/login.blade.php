@@ -16,7 +16,7 @@
       <div class="header-content">
         <div class="login-logo text-center">
           <a href="/" class="box_logo">
-            <img src="/images/default-logo.png" alt="">  ExamReg
+            <img src="/images/uet-logo.png" alt="">  ExamReg
           </a>
         </div>
       </div>
