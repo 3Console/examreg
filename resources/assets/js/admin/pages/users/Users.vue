@@ -187,9 +187,12 @@
         let formData = new FormData();
         formData.append('file', this.fileCSV, this.fileCSV.name);
 
+        this.isLoading = true;
+
 
         this.data = rf.getRequest('AdminRequest').uploadCSV(formData);
         this.data.then(res => {
+          this.isLoading = false;
           this.showSuccess('Submit file CSV successful');
           this.refresh();
         }).catch(error => {

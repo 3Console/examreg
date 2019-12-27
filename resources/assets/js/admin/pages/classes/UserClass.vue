@@ -113,6 +113,11 @@
             </template>
           </template>
         </data-table>
+        <div id="loading" v-if="isLoading === true">
+          <div id="loading-content">
+            <i class="fa fa-spinner fa-spin"></i>
+          </div>
+        </div>
       </div>
     </section>
     <modal :name="uploadResult"
@@ -253,10 +258,12 @@
         let formData = new FormData();
         formData.append('file', this.fileCSV, this.fileCSV.name);
         formData.append('classId', this.$route.params.id);
+        this.isLoading = true;
 
 
         this.data = rf.getRequest('ClassRequest').uploadStudentCSV(formData);
         this.data.then(res => {
+          this.isLoading = false;
           this.showSuccess('Submit file CSV successful');
           window.CommonModal.show(this.uploadResult);
           this.refresh();
@@ -408,6 +415,30 @@
 </script>
 <style lang="scss" scoped>
   @import "../../../../sass/common";
+  #loading {
+    width: 100%;
+    height: 100%;
+    top: 0px;
+    left: 0px;
+    position: fixed;
+    display: block;
+    opacity: 0.7;
+    background-color: #fff;
+    z-index: 9999;
+    text-align: center;
+  }
+
+  #loading-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    text-align: center;
+    z-index: 100;
+    i {
+      font-size: 40px;
+    }
+  }
+
   .btn-create-student {
     border: 1px solid $color_eden;
     line-height: 20px;
@@ -593,5 +624,14 @@
       }
     }
 
+  }
+</style>
+<style lang="scss">
+  @import "../../../../sass/common";
+  #user-classes {
+    .table-bounty_scroll {
+      height: 300px;
+      overflow: auto;
+    }
   }
 </style>

@@ -287,7 +287,12 @@ class AdminService {
 
     public function removeSemester($input)
     {
-        $semester = Semester::findOrFail($input['id'])->delete();
+        $semester = Semester::findOrFail($input['id']);
+        if ($semester->is_register === 1) {
+            throw new Exception("This semester is open. You can't delete this semester");
+        }
+        else $semester->delete();
+        
         return $semester;
     }
 
@@ -408,8 +413,23 @@ class AdminService {
 
     public function removeClass($input)
     {
-        $class = UnitClass::findOrFail($input['id'])->delete();
+        $check = $this->checkScheduleHaveClass($input['id']);
+        if (!empty($check)) {
+            throw new Exception("This class have in schedule. You can't delete this class");
+        }
+        else {
+            $class = UnitClass::findOrFail($input['id'])->delete();
+        }
         return $class;
+    }
+
+    private function checkScheduleHaveClass($id)
+    {
+        $schedule = Schedule::where('unit_class_id', $id)
+                    ->select('id')
+                    ->first();
+
+        return $schedule;
     }
 
     public function getUnitClass($classId)
@@ -727,6 +747,8 @@ class AdminService {
 
     public function updateShift($input)
     {
+        $check = $this->checkScheduleHaveShift($input['id']);
+        \Log::alert($check);
 
         $shift = Shift::findOrFail($input['id']);
 
@@ -744,8 +766,25 @@ class AdminService {
 
     public function removeShift($input)
     {
-        $shift = Shift::findOrFail($input['id'])->delete();
+        $check = $this->checkScheduleHaveShift($input['id']);
+
+        if (!empty($check)) {
+            throw new Exception("This shift have in schedule. You can't delete this shift");
+        }
+        else {
+            $shift = Shift::findOrFail($input['id'])->delete();
+        }
+
         return $shift;
+    }
+
+    private function checkScheduleHaveShift($id)
+    {
+        $schedule = Schedule::where('shift_id', $id)
+                    ->select('id')
+                    ->first();
+
+        return $schedule;
     }
 
     public function getLocations($input)
@@ -808,7 +847,22 @@ class AdminService {
 
     public function removeLocation($input)
     {
-        $location = Location::findOrFail($input['id'])->delete();
+        $check = $this->checkScheduleHaveLocation($input['id']);
+        if (!empty($check)) {
+            throw new Exception("This location have in schedule. You can't delete this location");
+        }
+        else {
+            $location = Location::findOrFail($input['id'])->delete();
+        }
         return $location;
+    }
+
+    private function checkScheduleHaveLocation($id)
+    {
+        $schedule = Schedule::where('location_id', $id)
+                    ->select('id')
+                    ->first();
+
+        return $schedule;
     }
 }
