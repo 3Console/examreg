@@ -11,7 +11,7 @@
     "production": "cross-env NODE_ENV=production node_modules/webpack/bin/webpack.js --no-progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js"
   },
   "devDependencies": {
-    "axios": "^0.18",
+    "axios": "^0.21",
     "bootstrap": "^4.0.0",
     "cross-env": "^5.1",
     "jquery": "^3.2",
@@ -31,7 +31,7 @@
   "dependencies": {
     "@ckeditor/ckeditor5-build-decoupled-document": "^12.2.0",
     "@ckeditor/ckeditor5-vue": "^1.0.0-beta.2",
-    "axios": "^0.16.2",
+    "axios": "^0.21.1",
     "babel-helper-vue-jsx-merge-props": "^2.0.3",
     "babel-polyfill": "^6.26.0",
     "bignumber.js": "^4.1.0",
