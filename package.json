@@ -66,6 +66,6 @@
     "vue-stripe-elements-plus": "0.2.9",
     "vue2-datepicker": "^2.12.0",
     "vuex": "^3.1.0",
-    "xlsx": "^0.15.1"
+    "xlsx": "^0.17.0"
   }
 }
