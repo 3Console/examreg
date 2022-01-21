@@ -45,7 +45,7 @@
     "es6-promise": "^4.2.4",
     "iban": "0.0.12",
     "laravel-echo": "^1.5.3",
-    "log4js": "^2.3.10",
+    "log4js": "^6.4.0",
     "moment": "^2.24.0",
     "moment-timezone": "^0.5.16",
     "node-sass": "^4.11.0",
