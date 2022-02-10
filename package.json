@@ -48,7 +48,7 @@
     "log4js": "^2.3.10",
     "moment": "^2.24.0",
     "moment-timezone": "^0.5.16",
-    "node-sass": "^4.11.0",
+    "node-sass": "^7.0.0",
     "payform": "^1.4.0",
     "superagent": "^3.8.0",
     "v-tooltip": "^2.0.2",
